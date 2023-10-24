@@ -21,6 +21,7 @@ public class Main {
         cola.encolar(20);
         cola.encolar(30);
         
+        cola.desecolar();
         cola.imprimirCola();
         
         
