@@ -10,8 +10,8 @@ package Clases;
  */
 public class Cola {
     
-    private Nodo inicioCola;
-    private Nodo finCola; 
+    private Personajes inicioCola;
+    private Personajes finCola; 
     
     public Cola(){
     
@@ -33,7 +33,7 @@ public class Cola {
     
     public void encolar(int dato){
     
-        Nodo nuevoNodo = new Nodo(dato);
+        Personajes nuevoNodo = new Personajes(dato);
         if (ColaVacia()){
             inicioCola = nuevoNodo;
             finCola = nuevoNodo;
@@ -75,7 +75,7 @@ public class Cola {
     
     public void imprimirCola(){
         
-        Nodo temporal = inicioCola; 
+        Personajes temporal = inicioCola; 
         
         System.out.println("Cola:");
         

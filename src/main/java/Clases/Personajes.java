@@ -8,12 +8,13 @@ package Clases;
  *
  * @author samue
  */
-public class Nodo {
+public class Personajes {
+    
     private int dato;
-    private Nodo siguiente; 
+    private Personajes siguiente; 
     
     
-    public Nodo (int dato){
+    public Personajes (int dato){
     
         this.dato=dato;
         this.siguiente=null;
@@ -24,11 +25,11 @@ public class Nodo {
         return dato;
     }
    
-    public Nodo getSiguiente() {
+    public Personajes getSiguiente() {
         return siguiente;
     }
 
-    public void setSiguiente(Nodo siguiente) {
+    public void setSiguiente(Personajes siguiente) {
         this.siguiente = siguiente;
     }
     
