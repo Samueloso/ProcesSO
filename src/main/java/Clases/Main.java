@@ -17,9 +17,8 @@ public class Main {
         // TODO code application logic here
         
         Cola cola = new Cola();
-        cola.encolar(10);
-        cola.encolar(20);
-        cola.encolar(30);
+        //cola.encolar(10);
+
         
         cola.desecolar();
         cola.imprimirCola();

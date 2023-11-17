@@ -31,9 +31,9 @@ public class Cola {
     
     }
     
-    public void encolar(int dato){
+    public void encolar(int id,int prioridad, String nombre, int contador, int hp, int fuerza, int agilidad, int skill){
     
-        Personajes nuevoNodo = new Personajes(dato);
+        Personajes nuevoNodo = new Personajes(id, prioridad, nombre ,contador, hp, fuerza, agilidad, skill);
         if (ColaVacia()){
             inicioCola = nuevoNodo;
             finCola = nuevoNodo;
@@ -53,7 +53,7 @@ public class Cola {
         
         if(!ColaVacia()){
         
-            int dato = inicioCola.getDato() ;
+            int id = inicioCola.getID() ;
             
             if (inicioCola == finCola ){
                 inicioCola= null;
@@ -63,7 +63,7 @@ public class Cola {
             else{
                 inicioCola = inicioCola.getSiguiente();
             }
-            return dato;
+            return id;
             
             
         }
@@ -81,7 +81,7 @@ public class Cola {
         
         while (temporal!=null){
             
-            System.out.println(temporal.getDato() + " ");
+            System.out.println(temporal.getID() + " ");
             temporal =  temporal.getSiguiente();
         
         }
