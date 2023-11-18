@@ -22,12 +22,7 @@ public class Cola {
     
     public boolean ColaVacia(){
     
-        if (inicioCola == null){
-        return true;
-        }
-        else{
-        return false;
-        }
+        return inicioCola == null;
     
     }
     
@@ -49,7 +44,7 @@ public class Cola {
     
     }
     
-    public int desecolar(){
+    public int desencolar(){
         
         if(!ColaVacia()){
         

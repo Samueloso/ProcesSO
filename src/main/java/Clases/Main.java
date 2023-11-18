@@ -20,7 +20,7 @@ public class Main {
         //cola.encolar(10);
 
         
-        cola.desecolar();
+        cola.desencolar();
         cola.imprimirCola();
         
         
