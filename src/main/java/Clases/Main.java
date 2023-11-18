@@ -15,13 +15,13 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
-        Cola cola = new Cola();
-        //cola.encolar(10);
+        //Personajes pj=new Personajes(0,0,"jose",0,0,0,0,0);
+        //Cola cola = new Cola();
+        //cola.encolar(pj);
 
         
-        cola.desencolar_cabeza();
-        cola.imprimirCola();
+        //cola.desencolar_cabeza();
+        //cola.imprimirCola();
         
         
     }
