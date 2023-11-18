@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -11,7 +13,7 @@ import java.util.Random;
  * @author samue
  */
 public class Personajes {
-
+    private static int idCounter=0;
     private int id;
     private boolean activate;
     private int prioridad;
@@ -26,7 +28,8 @@ public class Personajes {
 
     public Personajes(int id, int prioridad, String nombre, int contador, int vida, int fuerza, int agilidad, int habilidad) {
 
-        this.id = id;
+        this.id = idCounter;
+        idCounter++;
         this.activate = false;
         this.prioridad = prioridad;
         this.nombre = nombre;
@@ -111,6 +114,7 @@ public class Personajes {
     public void setId(int id) {
         this.id = id;
     }
+
 
     public String getNombre() {
         return nombre;
@@ -254,7 +258,7 @@ public class Personajes {
 
             setPrioridad(1);
 
-        } else if (contadorR == 2) {
+        } else if (contadorR == 2  || contadorN==2 || contadorUR==2) {
 
             setPrioridad(2);
 
@@ -263,6 +267,50 @@ public class Personajes {
             setPrioridad(3);
 
         }
+        
+        System.out.println(contadorUR + "UR");
+        System.out.println(contadorR + "R");
+        System.out.println(contadorN + "N");
+    }
+    
+    public String ListaNombreZ(){
+    
+        List<String> nombres = new ArrayList<>();        
+        nombres.add("Link");
+        nombres.add("Ganondorf");
+        nombres.add("Zelda");
+        nombres.add("Sidon");
+        nombres.add("Riju");
+        nombres.add("Tureli");
+        nombres.add("Yunobo");
+        nombres.add("Rauru");
+        nombres.add("Zonai");
+        nombres.add("Chuchu");
+        nombres.add("Prunia");
+        nombres.add("Kolog");
+        nombres.add("Demon Dragon");
+        
+        //selecciono nombre al alzar
+        
+        Random rand = new Random();
+        
+        String nombre= nombres.get(rand.nextInt(nombres.size()));
+        
+    return nombre;
+    }
+    
+    
+    public void CrearPersonaje(){
+    
+        setId(this.id);
+        setContador(0);
+        setNombre(ListaNombreZ());
+        AsignarStats();
+        Asignar_Prioridad();
+        
+        
+    
+    
     }
 
 }

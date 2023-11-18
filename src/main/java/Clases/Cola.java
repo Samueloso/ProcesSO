@@ -112,7 +112,7 @@ public class Cola {
 
         while (temporal != null) {
 
-            System.out.println(temporal.getId() + " ");
+            System.out.println(temporal.getId()+ " "+ temporal.getPrioridad() + " "+temporal.getNombre()+" "+temporal.getVida()+" "+temporal.getFuerza()+" "+temporal.getAgilidad()+" "+ temporal.getHabilidad());
             temporal = temporal.getSiguiente();
 
         }

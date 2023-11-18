@@ -15,12 +15,18 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        
+        Personajes pj=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes pj1=new Personajes(0,0,"",0,0,0,0,0);
+        pj.CrearPersonaje();
+    
+        pj1.CrearPersonaje();
         Cola cola = new Cola();
-        //cola.encolar(10);
+        cola.encolar(pj);
+        cola.encolar(pj);
+        cola.encolar(pj1);
 
-        
-        cola.desencolar_cabeza();
+  
+        //cola.desencolar_cabeza();
         cola.imprimirCola();
         
         
