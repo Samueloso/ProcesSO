@@ -9,78 +9,114 @@ package Clases;
  * @author samue
  */
 public class Cola {
-    
+
     private Personajes inicioCola;
-    private Personajes finCola; 
-    
-    public Cola(){
-    
-        inicioCola=null;
-        finCola=null; 
-        
+    private Personajes finCola;
+
+    public Cola() {
+
+        this.inicioCola = null;
+        this.finCola = null;
+
     }
     
-    public boolean ColaVacia(){
-    
-        return inicioCola == null;
-    
+    public Personajes getInicioCola() {
+        return inicioCola;
     }
-    
-    public void encolar(int id,int prioridad, String nombre, int contador, int hp, int fuerza, int agilidad, int skill){
-    
-        Personajes nuevoNodo = new Personajes(id, prioridad, nombre ,contador, hp, fuerza, agilidad, skill);
-        if (ColaVacia()){
-            inicioCola = nuevoNodo;
-            finCola = nuevoNodo;
+
+    public void setInicioCola(Personajes inicioCola) {
+        this.inicioCola = inicioCola;
+    }
+
+    public Personajes getFinCola() {
+        return finCola;
+    }
+
+    public void setFinCola(Personajes finCola) {
+        this.finCola = finCola;
+    }
+
+    public boolean ColaVacia() {
+
+        return getInicioCola() == null;
+
+    }
+
+    public void encolar(Personajes pj) {
+
+        if (ColaVacia()) {
+            setInicioCola(pj);
+            setFinCola(pj);
+            pj.setAnterior(null);
+            pj.setSiguiente(null);
+        } else {
+            getFinCola().setSiguiente(pj);
+            Personajes temp = getFinCola();
+            pj.setAnterior(temp);
+            pj.setSiguiente(null);
+            setFinCola(pj);
         }
-        else{
-        
-            finCola.setSiguiente(nuevoNodo);
-            finCola=nuevoNodo; 
-        
-        }
-    
-        
-    
+
     }
-    
-    public int desencolar(){
-        
-        if(!ColaVacia()){
-        
-            int id = inicioCola.getID() ;
-            
-            if (inicioCola == finCola ){
-                inicioCola= null;
-                finCola= null;
-                
+
+    public void desencolar_cabeza() {
+
+        if (!ColaVacia()) {
+
+            if (getInicioCola() == getFinCola()) {
+                setInicioCola(null);
+                setFinCola(null);
+
+            } else {
+                setInicioCola(getInicioCola().getSiguiente());
+                getInicioCola().setAnterior(null);
             }
-            else{
-                inicioCola = inicioCola.getSiguiente();
-            }
-            return id;
-            
-            
+
+        } else {
+
         }
-        else{
-        return 0;
-        }
-        
+
     }
     
-    public void imprimirCola(){
-        
-        Personajes temporal = inicioCola; 
-        
+    public void desencolar(Personajes pj) {
+
+        if (!ColaVacia()) {
+
+            if (getInicioCola() == getFinCola()) {
+                setInicioCola(null);
+                setFinCola(null);
+            } else if (pj == getInicioCola()){
+                setInicioCola(pj.getSiguiente());
+                getInicioCola().setAnterior(null);
+            } else if(pj == getFinCola()){
+                setFinCola(pj.getAnterior());
+                getFinCola().setSiguiente(null);
+            } else {
+                Personajes temp1 = pj.getAnterior();
+                Personajes temp2 =pj.getSiguiente();
+                temp1.setSiguiente(temp2);
+                temp2.setAnterior(temp1);
+            }
+
+        } else {
+
+        }
+
+    }
+
+    public void imprimirCola() {
+
+        Personajes temporal = getInicioCola();
+
         System.out.println("Cola:");
-        
-        while (temporal!=null){
-            
-            System.out.println(temporal.getID() + " ");
-            temporal =  temporal.getSiguiente();
-        
+
+        while (temporal != null) {
+
+            System.out.println(temporal.getId() + " ");
+            temporal = temporal.getSiguiente();
+
         }
         System.out.println("");
     }
-    
+
 }

@@ -12,16 +12,16 @@ import java.util.Random;
  */
 public class Personajes {
 
-    public int id;
+    private int id;
     private int prioridad;
-    public String nombre;
+    private String nombre;
     private int contador;
     private int vida;
     private int fuerza;
     private int agilidad;
     private int habilidad;
     private Personajes siguiente;
-    public Personajes anterior;
+    private Personajes anterior;
 
     public Personajes(int id, int prioridad, String nombre, int contador, int vida, int fuerza, int agilidad, int habilidad) {
 
@@ -36,10 +36,6 @@ public class Personajes {
         this.siguiente = null;
         this.anterior = null;
 
-    }
-
-    public int getID() {
-        return getId();
     }
 
     public int getPrioridad() {
