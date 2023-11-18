@@ -43,7 +43,41 @@ public class Admin extends Thread {
     }
 
     public void Select() {
-
+        Random rand = new Random();
+        if (rand.nextDouble() <= 0.8) {
+            boolean foundZ = false;
+            boolean foundSF = false;
+            int i = 0;
+            while (!foundZ && !foundSF) {
+                if (!foundZ) {
+                    Personajes temp = Zelda[i];
+                    if (!temp.isActivate()) {
+                        SelectCola(temp, true);
+                        foundZ = true;
+                    }
+                }
+                if (!foundSF) {
+                    Personajes temp = StreetFighter[i];
+                    if (!temp.isActivate()) {
+                        SelectCola(temp, false);
+                        foundSF = true;
+                    }
+                }
+                i++;
+                if (i >= 10) {
+                    foundZ = true;
+                    foundSF = true;
+                }
+            }
+        }
+        boolean Zready = false;
+        boolean SFready = false;
+        while(!Zready){
+            
+        }
+        while(!SFready){
+            
+        }
     }
 
     public void Check() {
@@ -120,6 +154,29 @@ public class Admin extends Thread {
                     temp.setContador(count);
                     temp = temp.getSiguiente();
                 }
+            }
+        }
+    }
+
+    public void SelectCola(Personajes pj, boolean n) {
+        int priori = pj.getPrioridad();
+        if (n) {
+            switch (priori) {
+                case 1 ->
+                    Zcola1.encolar(pj);
+                case 2 ->
+                    Zcola2.encolar(pj);
+                case 3 ->
+                    Zcola3.encolar(pj);
+            }
+        } else {
+            switch (priori) {
+                case 1 ->
+                    SFcola1.encolar(pj);
+                case 2 ->
+                    SFcola2.encolar(pj);
+                case 3 ->
+                    SFcola3.encolar(pj);
             }
         }
     }

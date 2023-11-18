@@ -13,6 +13,7 @@ import java.util.Random;
 public class Personajes {
 
     private int id;
+    private boolean activate;
     private int prioridad;
     private String nombre;
     private int contador;
@@ -26,6 +27,7 @@ public class Personajes {
     public Personajes(int id, int prioridad, String nombre, int contador, int vida, int fuerza, int agilidad, int habilidad) {
 
         this.id = id;
+        this.activate = false;
         this.prioridad = prioridad;
         this.nombre = nombre;
         this.contador = contador;
@@ -38,6 +40,14 @@ public class Personajes {
 
     }
 
+    public boolean isActivate() {
+        return activate;
+    }
+
+    public void setActivate(boolean activate) {
+        this.activate = activate;
+    }
+    
     public int getPrioridad() {
         return prioridad;
     }
