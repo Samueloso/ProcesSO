@@ -28,11 +28,14 @@ public class Admin extends Thread {
     private Cola SFcola2;
     private Cola SFcola3;
     private Cola SFcolar;
+    private Cola winners;
     private Personajes[] Zelda;
     private Personajes[] StreetFighter;
     private IA Simulador;
     private int timing;
     private int ciclos;
+    private int pointsZ;
+    private int pointsSF;
 
     public Admin() {
         this.sema1 = new Semaphore(1);
@@ -46,15 +49,171 @@ public class Admin extends Thread {
         this.SFcola2 = new Cola();
         this.SFcola3 = new Cola();
         this.SFcolar = new Cola();
+        this.winners = new Cola();
         this.Zelda = new Personajes[10];
         this.StreetFighter = new Personajes[10];
-        this.Simulador = new IA(this.sema1, this.sema2, this.sema3);
+        this.Simulador = new IA(this.sema1, this.sema2, this.sema3, this);
         this.timing = 10;
         this.ciclos = 0;
+        this.pointsZ = 0;
+        this.pointsSF = 0;
     }
 
-    public void init() {
+    public Semaphore getSema1() {
+        return sema1;
+    }
 
+    public void setSema1(Semaphore sema1) {
+        this.sema1 = sema1;
+    }
+
+    public Semaphore getSema2() {
+        return sema2;
+    }
+
+    public void setSema2(Semaphore sema2) {
+        this.sema2 = sema2;
+    }
+
+    public Semaphore getSema3() {
+        return sema3;
+    }
+
+    public void setSema3(Semaphore sema3) {
+        this.sema3 = sema3;
+    }
+
+    public Cola getZcola1() {
+        return Zcola1;
+    }
+
+    public void setZcola1(Cola Zcola1) {
+        this.Zcola1 = Zcola1;
+    }
+
+    public Cola getZcola2() {
+        return Zcola2;
+    }
+
+    public void setZcola2(Cola Zcola2) {
+        this.Zcola2 = Zcola2;
+    }
+
+    public Cola getZcola3() {
+        return Zcola3;
+    }
+
+    public void setZcola3(Cola Zcola3) {
+        this.Zcola3 = Zcola3;
+    }
+
+    public Cola getZcolar() {
+        return Zcolar;
+    }
+
+    public void setZcolar(Cola Zcolar) {
+        this.Zcolar = Zcolar;
+    }
+
+    public Cola getSFcola1() {
+        return SFcola1;
+    }
+
+    public void setSFcola1(Cola SFcola1) {
+        this.SFcola1 = SFcola1;
+    }
+
+    public Cola getSFcola2() {
+        return SFcola2;
+    }
+
+    public void setSFcola2(Cola SFcola2) {
+        this.SFcola2 = SFcola2;
+    }
+
+    public Cola getSFcola3() {
+        return SFcola3;
+    }
+
+    public void setSFcola3(Cola SFcola3) {
+        this.SFcola3 = SFcola3;
+    }
+
+    public Cola getSFcolar() {
+        return SFcolar;
+    }
+
+    public void setSFcolar(Cola SFcolar) {
+        this.SFcolar = SFcolar;
+    }
+
+    public Personajes[] getZelda() {
+        return Zelda;
+    }
+
+    public void setZelda(Personajes[] Zelda) {
+        this.Zelda = Zelda;
+    }
+
+    public Personajes[] getStreetFighter() {
+        return StreetFighter;
+    }
+
+    public void setStreetFighter(Personajes[] StreetFighter) {
+        this.StreetFighter = StreetFighter;
+    }
+
+    public IA getSimulador() {
+        return Simulador;
+    }
+
+    public void setSimulador(IA Simulador) {
+        this.Simulador = Simulador;
+    }
+
+    public int getTiming() {
+        return timing;
+    }
+
+    public void setTiming(int timing) {
+        this.timing = timing;
+    }
+
+    public int getCiclos() {
+        return ciclos;
+    }
+
+    public void setCiclos(int ciclos) {
+        this.ciclos = ciclos;
+    }
+
+    public Cola getWinners() {
+        return winners;
+    }
+
+    public void setWinners(Cola winners) {
+        this.winners = winners;
+    }
+
+    public int getPointsZ() {
+        return pointsZ;
+    }
+
+    public void setPointsZ(int pointsZ) {
+        this.pointsZ = pointsZ;
+    }
+
+    public int getPointsSF() {
+        return pointsSF;
+    }
+
+    public void setPointsSF(int pointsSF) {
+        this.pointsSF = pointsSF;
+    }
+    
+
+    public void init() {
+        
     }
 
     @Override
@@ -65,7 +224,7 @@ public class Admin extends Thread {
 
                 Work();
 
-                sleep(timing*1000);
+                sleep(getTiming() * 1000);
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,13 +234,13 @@ public class Admin extends Thread {
     }
 
     public void Work() {
-        Check();
         try {
-            sema3.acquire(1);
-            sema1.acquire(1);
+            Check();
+            getSema3().acquire(1);
+            getSema1().acquire(1);
             Select();
-            sema1.release();
-            sema2.release();
+            getSema1().release();
+            getSema2().release();
         } catch (InterruptedException ex) {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -118,24 +277,24 @@ public class Admin extends Thread {
         switch (1) {
             case 1: {
                 if (!Zcola1.ColaVacia()) {
-                    Personajes temp = Zcola1.getInicioCola();
-                    Zcola1.desencolar_cabeza();
+                    Personajes temp = getZcola1().getInicioCola();
+                    getZcola1().desencolar_cabeza();
                     //Función de añadir a la casilla Zelda
                     break;
                 }
             }
             case 2: {
                 if (!Zcola2.ColaVacia()) {
-                    Personajes temp = Zcola2.getInicioCola();
-                    Zcola2.desencolar_cabeza();
+                    Personajes temp = getZcola2().getInicioCola();
+                    getZcola2().desencolar_cabeza();
                     //Función de añadir a la casilla Zelda
                     break;
                 }
             }
             case 3: {
                 if (!Zcola3.ColaVacia()) {
-                    Personajes temp = Zcola3.getInicioCola();
-                    Zcola3.desencolar_cabeza();
+                    Personajes temp = getZcola3().getInicioCola();
+                    getZcola3().desencolar_cabeza();
                     //Función de añadir a la casilla Zelda
                     break;
                 }
@@ -148,24 +307,24 @@ public class Admin extends Thread {
         switch (1) {
             case 1: {
                 if (!SFcola1.ColaVacia()) {
-                    Personajes temp = SFcola1.getInicioCola();
-                    SFcola1.desencolar_cabeza();
+                    Personajes temp = getSFcola1().getInicioCola();
+                    getSFcola1().desencolar_cabeza();
                     //Función de añadir a la casilla Street Fighter
                     break;
                 }
             }
             case 2: {
                 if (!SFcola2.ColaVacia()) {
-                    Personajes temp = SFcola2.getInicioCola();
-                    SFcola2.desencolar_cabeza();
+                    Personajes temp = getSFcola2().getInicioCola();
+                    getSFcola2().desencolar_cabeza();
                     //Función de añadir a la casilla Street Fighter
                     break;
                 }
             }
             case 3: {
                 if (!SFcola3.ColaVacia()) {
-                    Personajes temp = SFcola3.getInicioCola();
-                    SFcola3.desencolar_cabeza();
+                    Personajes temp = getSFcola3().getInicioCola();
+                    getSFcola3().desencolar_cabeza();
                     //Función de añadir a la casilla Street Fighter
                     break;
                 }
@@ -178,25 +337,26 @@ public class Admin extends Thread {
 
     public void Check() {
         Random rand = new Random();
-        if (!Zcolar.ColaVacia() && rand.nextDouble() <= 0.4) {
-            Personajes temp = Zcolar.getInicioCola();
-            Zcolar.desencolar_cabeza();
-            Zcola1.encolar(temp);
+        double prob = rand.nextDouble();
+        if (!Zcolar.ColaVacia() && prob <= 0.4) {
+            Personajes temp = getZcolar().getInicioCola();
+            getZcolar().desencolar_cabeza();
+            getZcola1().encolar(temp);
         }
-        if (!SFcolar.ColaVacia() && rand.nextDouble() <= 0.4) {
-            Personajes temp = SFcolar.getInicioCola();
-            SFcolar.desencolar_cabeza();
-            SFcola1.encolar(temp);
+        if (!SFcolar.ColaVacia() && prob <= 0.4) {
+            Personajes temp = getSFcolar().getInicioCola();
+            getSFcolar().desencolar_cabeza();
+            getSFcola1().encolar(temp);
         }
         if (!Zcola2.ColaVacia()) {
-            Personajes temp = Zcola2.getInicioCola();
+            Personajes temp = getZcola2().getInicioCola();
             while (temp != null) {
                 int count = temp.getContador();
                 if (count >= 8) {
                     Personajes temp1 = temp;
                     temp = temp.getSiguiente();
-                    Zcola2.desencolar(temp1);
-                    Zcola1.encolar(temp1);
+                    getZcola2().desencolar(temp1);
+                    getZcola1().encolar(temp1);
                 } else {
                     count++;
                     temp.setContador(count);
@@ -205,14 +365,14 @@ public class Admin extends Thread {
             }
         }
         if (!Zcola3.ColaVacia()) {
-            Personajes temp = Zcola3.getInicioCola();
+            Personajes temp = getZcola3().getInicioCola();
             while (temp != null) {
                 int count = temp.getContador();
                 if (count >= 8) {
                     Personajes temp1 = temp;
                     temp = temp.getSiguiente();
-                    Zcola3.desencolar(temp1);
-                    Zcola2.encolar(temp1);
+                    getZcola3().desencolar(temp1);
+                    getZcola2().encolar(temp1);
                 } else {
                     count++;
                     temp.setContador(count);
@@ -221,14 +381,14 @@ public class Admin extends Thread {
             }
         }
         if (!SFcola2.ColaVacia()) {
-            Personajes temp = SFcola2.getInicioCola();
+            Personajes temp = getSFcola2().getInicioCola();
             while (temp != null) {
                 int count = temp.getContador();
                 if (count >= 8) {
                     Personajes temp1 = temp;
                     temp = temp.getSiguiente();
-                    SFcola2.desencolar(temp1);
-                    SFcola1.encolar(temp1);
+                    getSFcola2().desencolar(temp1);
+                    getSFcola1().encolar(temp1);
                 } else {
                     count++;
                     temp.setContador(count);
@@ -237,14 +397,14 @@ public class Admin extends Thread {
             }
         }
         if (!SFcola3.ColaVacia()) {
-            Personajes temp = SFcola3.getInicioCola();
+            Personajes temp = getSFcola3().getInicioCola();
             while (temp != null) {
                 int count = temp.getContador();
                 if (count >= 8) {
                     Personajes temp1 = temp;
                     temp = temp.getSiguiente();
-                    SFcola3.desencolar(temp1);
-                    SFcola2.encolar(temp1);
+                    getSFcola3().desencolar(temp1);
+                    getSFcola2().encolar(temp1);
                 } else {
                     count++;
                     temp.setContador(count);
@@ -259,21 +419,51 @@ public class Admin extends Thread {
         if (n) {
             switch (priori) {
                 case 1 ->
-                    Zcola1.encolar(pj);
+                    getZcola1().encolar(pj);
                 case 2 ->
-                    Zcola2.encolar(pj);
+                    getZcola2().encolar(pj);
                 case 3 ->
-                    Zcola3.encolar(pj);
+                    getZcola3().encolar(pj);
             }
         } else {
             switch (priori) {
                 case 1 ->
-                    SFcola1.encolar(pj);
+                    getSFcola1().encolar(pj);
                 case 2 ->
-                    SFcola2.encolar(pj);
+                    getSFcola2().encolar(pj);
                 case 3 ->
-                    SFcola3.encolar(pj);
+                    getSFcola3().encolar(pj);
             }
         }
     }
+
+    public void advertise() {
+        String value = Simulador.getStatus();
+        if (value == "Win") {
+            boolean win = Simulador.isZwinner();
+            if (win) {
+                getWinners().encolar(Simulador.getZ());
+                Simulador.setZ(null);
+                Simulador.setSF(null);
+                setPointsZ(getPointsZ() + 1);
+                
+            } else {
+                getWinners().encolar(Simulador.getSF());
+                Simulador.setZ(null);
+                Simulador.setSF(null);
+                setPointsSF(getPointsSF() + 1);
+            }
+        } else if (value == "Tie") {
+            Zcola1.encolar(Simulador.getZ());
+            SFcola1.encolar(Simulador.getSF());
+            Simulador.setZ(null);
+            Simulador.setSF(null);
+        } else if (value == "Unable") {
+            Zcolar.encolar(Simulador.getZ());
+            SFcolar.encolar(Simulador.getSF());
+            Simulador.setZ(null);
+            Simulador.setSF(null);
+        }
+    }
+
 }
