@@ -147,9 +147,30 @@ public class IA extends Thread{
     }
     
     //Aquí haz que retorne un valor, binario preferiblemente, si es uno significa que ganaron los de Zelda, y el otro significa ganó el de Street Fighter
-    public void Versus(){
+    public Boolean Versus(){
+    
+        // por ahora el while me restara puntos de vida con la fuerza del oponente hasta que lleguen a 0
+         while (Z.getVida()!=0 || SF.getVida()!=0){
+             
+             int Z_vs_SF = Z.getVida()-SF.getFuerza();
+             Z.setVida(Z_vs_SF);
+             int SF_vs_Z = SF.getVida() - Z.getFuerza();
+             SF.setVida(SF_vs_Z);
+             
+             
+         
+         }
+         
+         if(SF.getVida()==0){
+            return true;
+         }
+         else{
+            return false;
+         }
+        
         
     }
+    
 
     
     
