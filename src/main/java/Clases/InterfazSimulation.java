@@ -4,6 +4,9 @@
  */
 package Clases;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Radenixlol
@@ -75,6 +78,33 @@ public class InterfazSimulation extends javax.swing.JFrame {
             }
         }
     }
+
+    public void UpdateImage() {
+//        String nameZ = admin.getSimulador().getZ().getNombre();
+//        String url;
+//        if (nameZ == "Link") {
+//            url = "/Imagenes/Link.png";
+//        } else if (nameZ == "Ganondorf") {
+//            url = "/Imagenes/Ganondorf.png";
+//        } else if (nameZ == "Zelda") {
+//            url = "/Imagenes/Zelda.png";
+//        } else if (nameZ == "Sidon") {
+//            url = "/Imagenes/Sidon.png";
+//        } else if (nameZ == "Riju") {
+//            url = "/Imagenes/Riju.png";
+//        } else if (nameZ == "Yunobo") {
+//            url = "/Imagenes/Yunobo.png";
+//        } else if (nameZ == "Rauru") {
+//            url = "/Imagenes/Rauru.png";
+//        } else if (nameZ == "Prunia") {
+//            url = "/Imagenes/Prunia.png";
+//        } else {
+//            url = "/Imagenes/Kolog.png";
+//        }
+//        System.out.println( getClass());
+//        Icon mIcono = new javax.swing.ImageIcon(new javax.swing.ImageIcon(getClass().getResource("Kolog.png")).getImage().getScaledInstance(CasillaZ.getWidth(), CasillaZ.getHeight(), 0));
+//        CasillaZ.setIcon(mIcono);
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
