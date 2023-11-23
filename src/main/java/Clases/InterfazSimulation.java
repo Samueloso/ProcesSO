@@ -4,18 +4,107 @@
  */
 package Clases;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Radenixlol
  */
 public class InterfazSimulation extends javax.swing.JFrame {
 
+    Admin admin = new Admin(this);
+
     /**
      * Creates new form InterfazSimulation
      */
     public InterfazSimulation() {
         initComponents();
+        admin.init();
     }
+
+    public void UpdateCola(Boolean z, int type, Cola cola) {
+        String text = "";
+        boolean empty = cola.ColaVacia();
+        if (z) {
+            if (!empty) {
+                Personajes place = cola.getFinCola();
+                text += place.getId();
+                place = place.getAnterior();
+                while (place != null) {
+                    text += " -- ";
+                    text += place.getId();
+                    place = place.getAnterior();
+                }
+            }
+            switch (type) {
+                case 1 -> {
+                    Cola1Z.setText(text);
+                }
+                case 2 -> {
+                    Cola2Z.setText(text);
+                }
+                case 3 -> {
+                    Cola3Z.setText(text);
+                }
+                case 4 -> {
+                    ColaRZ.setText(text);
+                }
+            }
+        } else {
+            if (!empty) {
+                Personajes place = cola.getInicioCola();
+                text += place.getId();
+                place = place.getSiguiente();
+                while (place != null) {
+                    text += " -- ";
+                    text += place.getId();
+                    place = place.getSiguiente();
+                }
+            }
+            switch (type) {
+                case 1 -> {
+                    Cola1SF.setText(text);
+                }
+                case 2 -> {
+                    Cola2SF.setText(text);
+                }
+                case 3 -> {
+                    Cola3SF.setText(text);
+                }
+                case 4 -> {
+                    ColaRSF.setText(text);
+                }
+            }
+        }
+    }
+
+    public void UpdateImage() {
+//        String nameZ = admin.getSimulador().getZ().getNombre();
+//        String url;
+//        if (nameZ == "Link") {
+//            url = "/Imagenes/Link.png";
+//        } else if (nameZ == "Ganondorf") {
+//            url = "/Imagenes/Ganondorf.png";
+//        } else if (nameZ == "Zelda") {
+//            url = "/Imagenes/Zelda.png";
+//        } else if (nameZ == "Sidon") {
+//            url = "/Imagenes/Sidon.png";
+//        } else if (nameZ == "Riju") {
+//            url = "/Imagenes/Riju.png";
+//        } else if (nameZ == "Yunobo") {
+//            url = "/Imagenes/Yunobo.png";
+//        } else if (nameZ == "Rauru") {
+//            url = "/Imagenes/Rauru.png";
+//        } else if (nameZ == "Prunia") {
+//            url = "/Imagenes/Prunia.png";
+//        } else {
+//            url = "/Imagenes/Kolog.png";
+//        }
+//        System.out.println( getClass());
+//        Icon mIcono = new javax.swing.ImageIcon(new javax.swing.ImageIcon(getClass().getResource("Kolog.png")).getImage().getScaledInstance(CasillaZ.getWidth(), CasillaZ.getHeight(), 0));
+//        CasillaZ.setIcon(mIcono);
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,10 +116,205 @@ public class InterfazSimulation extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        Scroll1Z = new javax.swing.JScrollPane();
+        Cola1Z = new javax.swing.JTextArea();
+        Scroll2Z = new javax.swing.JScrollPane();
+        Cola2Z = new javax.swing.JTextArea();
+        Scroll3Z3 = new javax.swing.JScrollPane();
+        Cola3Z = new javax.swing.JTextArea();
+        ScrollRZ = new javax.swing.JScrollPane();
+        ColaRZ = new javax.swing.JTextArea();
+        Scroll1SF = new javax.swing.JScrollPane();
+        Cola1SF = new javax.swing.JTextArea();
+        Scroll2SF = new javax.swing.JScrollPane();
+        Cola2SF = new javax.swing.JTextArea();
+        Scroll3SF = new javax.swing.JScrollPane();
+        Cola3SF = new javax.swing.JTextArea();
+        ScrollRSF = new javax.swing.JScrollPane();
+        ColaRSF = new javax.swing.JTextArea();
+        CasillaZ = new javax.swing.JLabel();
+        StatusZ = new javax.swing.JTextField();
+        StatusSF = new javax.swing.JTextField();
+        CasillaSF = new javax.swing.JLabel();
+        CountZ = new javax.swing.JTextField();
+        CountSF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Scroll1Z.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        Scroll1Z.setFocusable(false);
+
+        Cola1Z.setEditable(false);
+        Cola1Z.setColumns(20);
+        Cola1Z.setRows(5);
+        Scroll1Z.setViewportView(Cola1Z);
+
+        Scroll2Z.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        Scroll2Z.setFocusable(false);
+
+        Cola2Z.setEditable(false);
+        Cola2Z.setColumns(20);
+        Cola2Z.setRows(5);
+        Scroll2Z.setViewportView(Cola2Z);
+
+        Scroll3Z3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        Scroll3Z3.setFocusable(false);
+
+        Cola3Z.setEditable(false);
+        Cola3Z.setColumns(20);
+        Cola3Z.setRows(5);
+        Scroll3Z3.setViewportView(Cola3Z);
+
+        ScrollRZ.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        ScrollRZ.setFocusable(false);
+
+        ColaRZ.setEditable(false);
+        ColaRZ.setColumns(20);
+        ColaRZ.setRows(5);
+        ScrollRZ.setViewportView(ColaRZ);
+
+        Scroll1SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        Scroll1SF.setFocusable(false);
+
+        Cola1SF.setEditable(false);
+        Cola1SF.setColumns(20);
+        Cola1SF.setRows(5);
+        Scroll1SF.setViewportView(Cola1SF);
+
+        Scroll2SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        Scroll2SF.setFocusable(false);
+
+        Cola2SF.setEditable(false);
+        Cola2SF.setColumns(20);
+        Cola2SF.setRows(5);
+        Scroll2SF.setViewportView(Cola2SF);
+
+        Scroll3SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        Scroll3SF.setFocusable(false);
+
+        Cola3SF.setEditable(false);
+        Cola3SF.setColumns(20);
+        Cola3SF.setRows(5);
+        Scroll3SF.setViewportView(Cola3SF);
+
+        ScrollRSF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        ScrollRSF.setFocusable(false);
+
+        ColaRSF.setEditable(false);
+        ColaRSF.setColumns(20);
+        ColaRSF.setRows(5);
+        ScrollRSF.setViewportView(ColaRSF);
+
+        CasillaZ.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        StatusZ.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        StatusZ.setText("WIN");
+        StatusZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatusZActionPerformed(evt);
+            }
+        });
+
+        StatusSF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        StatusSF.setText("LOSE");
+
+        CasillaSF.setBackground(new java.awt.Color(51, 204, 255));
+        CasillaSF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaSF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        CountZ.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CountZ.setText("0");
+        CountZ.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CountZActionPerformed(evt);
+            }
+        });
+
+        CountSF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        CountSF.setText("0");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ScrollRZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Scroll2Z, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Scroll1Z, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Scroll3Z3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(48, 48, 48)
+                        .addComponent(CasillaZ, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(409, 409, 409)
+                        .addComponent(CountZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(CasillaSF, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Scroll3SF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Scroll2SF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ScrollRSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(CountSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(157, 157, 157)
+                        .addComponent(Scroll1SF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(321, 321, 321))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(459, 459, 459)
+                .addComponent(StatusZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(182, 182, 182)
+                .addComponent(StatusSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(182, 182, 182)
+                        .addComponent(Scroll1SF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CountZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CountSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Scroll2SF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Scroll3SF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ScrollRSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CasillaSF, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(StatusSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(StatusZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(CasillaZ, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(230, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Scroll1Z, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Scroll2Z, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Scroll3Z3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ScrollRZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -46,6 +330,14 @@ public class InterfazSimulation extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void CountZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CountZActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CountZActionPerformed
+
+    private void StatusZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusZActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StatusZActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -60,21 +352,30 @@ public class InterfazSimulation extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfazSimulation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazSimulation.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfazSimulation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazSimulation.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfazSimulation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazSimulation.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfazSimulation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazSimulation.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new InterfazSimulation().setVisible(true);
             }
@@ -82,6 +383,28 @@ public class InterfazSimulation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CasillaSF;
+    private javax.swing.JLabel CasillaZ;
+    private javax.swing.JTextArea Cola1SF;
+    private javax.swing.JTextArea Cola1Z;
+    private javax.swing.JTextArea Cola2SF;
+    private javax.swing.JTextArea Cola2Z;
+    private javax.swing.JTextArea Cola3SF;
+    private javax.swing.JTextArea Cola3Z;
+    private javax.swing.JTextArea ColaRSF;
+    private javax.swing.JTextArea ColaRZ;
+    private javax.swing.JTextField CountSF;
+    private javax.swing.JTextField CountZ;
+    private javax.swing.JScrollPane Scroll1SF;
+    private javax.swing.JScrollPane Scroll1Z;
+    private javax.swing.JScrollPane Scroll2SF;
+    private javax.swing.JScrollPane Scroll2Z;
+    private javax.swing.JScrollPane Scroll3SF;
+    private javax.swing.JScrollPane Scroll3Z3;
+    private javax.swing.JScrollPane ScrollRSF;
+    private javax.swing.JScrollPane ScrollRZ;
+    private javax.swing.JTextField StatusSF;
+    private javax.swing.JTextField StatusZ;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
