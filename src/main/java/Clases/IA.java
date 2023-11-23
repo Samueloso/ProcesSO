@@ -135,29 +135,37 @@ public class IA extends Thread {
             boolean result = Versus();
             if (result) {
                 setZwinner(true);
+                System.out.println("Zelda gana");
             } else {
                 setZwinner(false);
+                System.out.println("SF gana");
             }
         } else if (prob >= 0.4 && prob < 0.67) {
             setStatus("Tie");
+            System.out.println("Empate");
         } else {
             setStatus("Unable");
+            System.out.println("Combate cancelado");
         }
         getAdmin().advertise();
     }
 
     //Aquí haz que retorne un valor, binario preferiblemente, si es uno significa que ganaron los de Zelda, y el otro significa ganó el de Street Fighter
     public Boolean Versus() {
-
+           
         // por ahora el while me restara puntos de vida con la fuerza del oponente hasta que lleguen a 0
-        while (Z.getVida() != 0 || SF.getVida() != 0) {
+        while (Z.getVida() >= 0 && SF.getVida() >= 0) {
 
             int Z_vs_SF = Z.getVida() - SF.getFuerza();
             Z.setVida(Z_vs_SF);
+            System.out.println("Vida de Zelda: ");
+            System.out.println(Z.getVida());
             int SF_vs_Z = SF.getVida() - Z.getFuerza();
+            System.out.println("Vida de SF: ");
             SF.setVida(SF_vs_Z);
+            System.out.println(SF.getVida());
         }
-        if (SF.getVida() == 0) {
+        if (SF.getVida() <= 0) {
             return true;
         } else {
             return false;

@@ -36,8 +36,9 @@ public class Admin extends Thread {
     private int ciclos;
     private int pointsZ;
     private int pointsSF;
+    private InterfazSimulation IS;
 
-    public Admin() {
+    public Admin(InterfazSimulation IS) {
         this.sema1 = new Semaphore(1);
         this.sema2 = new Semaphore(0);
         this.sema3 = new Semaphore(1);
@@ -57,6 +58,7 @@ public class Admin extends Thread {
         this.ciclos = 0;
         this.pointsZ = 0;
         this.pointsSF = 0;
+        this.IS = IS;
     }
 
     public Semaphore getSema1() {
@@ -212,17 +214,85 @@ public class Admin extends Thread {
     }
 
     public void init() {
-
+        Personajes Z0=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF0 =new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z1=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF1=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z2=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF2 =new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z3=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF3=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z4=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF4 =new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z5=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF5=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z6=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF6 =new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z7=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF7=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z8=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF8 =new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z9=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes SF9=new Personajes(0,0,"",0,0,0,0,0);
+        Z0.CrearPersonaje();
+        SF0.CrearPersonaje();
+        Z1.CrearPersonaje();
+        SF1.CrearPersonaje();
+        Z2.CrearPersonaje();
+        SF2.CrearPersonaje();
+        Z3.CrearPersonaje();
+        SF3.CrearPersonaje();
+        Z4.CrearPersonaje();
+        SF4.CrearPersonaje();
+        Z5.CrearPersonaje();
+        SF5.CrearPersonaje();
+        Z6.CrearPersonaje();
+        SF6.CrearPersonaje();
+        Z7.CrearPersonaje();
+        SF7.CrearPersonaje();
+        Z8.CrearPersonaje();
+        SF8.CrearPersonaje();
+        Z9.CrearPersonaje();
+        SF9.CrearPersonaje();
+        SelectCola(Z0, true);
+        SelectCola(SF0, false);
+        SelectCola(Z1, true);
+        SelectCola(SF1, false);
+        SelectCola(Z2, true);
+        SelectCola(SF2, false);
+        SelectCola(Z3, true);
+        SelectCola(SF3, false);
+        SelectCola(Z4, true);
+        SelectCola(SF4, false);
+        SelectCola(Z5, true);
+        SelectCola(SF5, false);
+        SelectCola(Z6, true);
+        SelectCola(SF6, false);
+        SelectCola(Z7, true);
+        SelectCola(SF7, false);
+        SelectCola(Z8, true);
+        SelectCola(SF8, false);
+        SelectCola(Z9, true);
+        SelectCola(SF9, false);
+        IS.UpdateCola(true, 1, getZcola1());
+        IS.UpdateCola(false, 1, getSFcola1());
+        IS.UpdateCola(true, 2, getZcola2());
+        IS.UpdateCola(false, 2, getSFcola2());
+        IS.UpdateCola(true, 3, getZcola3());
+        IS.UpdateCola(false, 3, getSFcola3());
+        IS.UpdateCola(true, 4, getZcolar());
+        IS.UpdateCola(false, 4, getSFcolar());
+        getSimulador().start();
+        this.start();
     }
 
     @Override
     public void run() {
-        init();
         while (true) {
             try {
 
                 Work();
-
+                System.out.println("Chambeando");
                 sleep(getTiming() * 1000);
 
             } catch (InterruptedException ex) {
@@ -252,14 +322,37 @@ public class Admin extends Thread {
             Personajes sf = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
             z.CrearPersonaje();
             sf.CrearPersonaje();
-            SelectCola(z,true);
-            SelectCola(sf,false);
+            int enteroz = SelectCola(z,true);
+            switch (enteroz) {
+                case 1 -> {
+                    IS.UpdateCola(true, 1, getZcola1());
+                }
+                case 2 -> {
+                    IS.UpdateCola(true, 2, getZcola2());
+                }
+                case 3 -> {
+                    IS.UpdateCola(true, 3, getZcola3());
+                }
+            }
+            int enterosf = SelectCola(sf,false);
+            switch (enterosf) {
+                case 1 -> {
+                    IS.UpdateCola(false, 1, getSFcola1());
+                }
+                case 2 -> {
+                    IS.UpdateCola(false, 2, getSFcola2());
+                }
+                case 3 -> {
+                    IS.UpdateCola(false, 3, getSFcola3());
+                }
+            }
         }
         switch (1) {
             case 1: {
                 if (!Zcola1.ColaVacia()) {
                     Personajes temp = getZcola1().getInicioCola();
                     getZcola1().desencolar_cabeza();
+                    IS.UpdateCola(true, 1, getZcola1());
                     getSimulador().setZ(temp);
                     break;
                 }
@@ -268,6 +361,7 @@ public class Admin extends Thread {
                 if (!Zcola2.ColaVacia()) {
                     Personajes temp = getZcola2().getInicioCola();
                     getZcola2().desencolar_cabeza();
+                    IS.UpdateCola(true, 2, getZcola2());
                     getSimulador().setZ(temp);
                     break;
                 }
@@ -276,6 +370,7 @@ public class Admin extends Thread {
                 if (!Zcola3.ColaVacia()) {
                     Personajes temp = getZcola3().getInicioCola();
                     getZcola3().desencolar_cabeza();
+                    IS.UpdateCola(true, 3, getZcola3());
                     getSimulador().setZ(temp);
                     break;
                 }
@@ -290,6 +385,7 @@ public class Admin extends Thread {
                 if (!SFcola1.ColaVacia()) {
                     Personajes temp = getSFcola1().getInicioCola();
                     getSFcola1().desencolar_cabeza();
+                    IS.UpdateCola(false, 1, getSFcola1());
                     getSimulador().setSF(temp);
                     break;
                 }
@@ -298,6 +394,7 @@ public class Admin extends Thread {
                 if (!SFcola2.ColaVacia()) {
                     Personajes temp = getSFcola2().getInicioCola();
                     getSFcola2().desencolar_cabeza();
+                    IS.UpdateCola(false, 2, getSFcola2());
                     getSimulador().setSF(temp);
                     break;
                 }
@@ -306,6 +403,7 @@ public class Admin extends Thread {
                 if (!SFcola3.ColaVacia()) {
                     Personajes temp = getSFcola3().getInicioCola();
                     getSFcola3().desencolar_cabeza();
+                    IS.UpdateCola(false, 3, getSFcola3());
                     getSimulador().setSF(temp);
                     break;
                 }
@@ -322,12 +420,16 @@ public class Admin extends Thread {
         if (!Zcolar.ColaVacia() && prob <= 0.4) {
             Personajes temp = getZcolar().getInicioCola();
             getZcolar().desencolar_cabeza();
+            IS.UpdateCola(true, 4, getZcolar());
             getZcola1().encolar(temp);
+            IS.UpdateCola(true, 1, getZcola1());
         }
         if (!SFcolar.ColaVacia() && prob <= 0.4) {
             Personajes temp = getSFcolar().getInicioCola();
             getSFcolar().desencolar_cabeza();
+            IS.UpdateCola(false, 4, getSFcolar());
             getSFcola1().encolar(temp);
+            IS.UpdateCola(false, 1, getSFcola1());
         }
         if (!Zcola2.ColaVacia()) {
             Personajes temp = getZcola2().getInicioCola();
@@ -337,7 +439,10 @@ public class Admin extends Thread {
                     Personajes temp1 = temp;
                     temp = temp.getSiguiente();
                     getZcola2().desencolar(temp1);
+                    IS.UpdateCola(true, 2, getZcola2());
                     getZcola1().encolar(temp1);
+                    IS.UpdateCola(true, 1, getZcola1());
+                    
                 } else {
                     count++;
                     temp.setContador(count);
@@ -353,7 +458,9 @@ public class Admin extends Thread {
                     Personajes temp1 = temp;
                     temp = temp.getSiguiente();
                     getZcola3().desencolar(temp1);
+                    IS.UpdateCola(true, 3, getZcola3());
                     getZcola2().encolar(temp1);
+                    IS.UpdateCola(true, 2, getZcola2());
                 } else {
                     count++;
                     temp.setContador(count);
@@ -369,7 +476,9 @@ public class Admin extends Thread {
                     Personajes temp1 = temp;
                     temp = temp.getSiguiente();
                     getSFcola2().desencolar(temp1);
+                    IS.UpdateCola(false, 2, getSFcola2());
                     getSFcola1().encolar(temp1);
+                    IS.UpdateCola(false, 1, getSFcola1());
                 } else {
                     count++;
                     temp.setContador(count);
@@ -385,7 +494,9 @@ public class Admin extends Thread {
                     Personajes temp1 = temp;
                     temp = temp.getSiguiente();
                     getSFcola3().desencolar(temp1);
+                    IS.UpdateCola(true, 3, getZcola3());
                     getSFcola2().encolar(temp1);
+                    IS.UpdateCola(false, 2, getSFcola2());
                 } else {
                     count++;
                     temp.setContador(count);
@@ -395,27 +506,46 @@ public class Admin extends Thread {
         }
     }
 
-    public void SelectCola(Personajes pj, boolean n) {
+    public int SelectCola(Personajes pj, boolean n) {
         int priori = pj.getPrioridad();
         if (n) {
             switch (priori) {
-                case 1 ->
+                case 1 -> {
                     getZcola1().encolar(pj);
-                case 2 ->
+                    return 1;
+                }
+                    
+                case 2 -> {
                     getZcola2().encolar(pj);
-                case 3 ->
+                    return 2;
+                }
+                    
+                case 3 -> {
                     getZcola3().encolar(pj);
+                    return 3;
+                }
+                    
             }
         } else {
             switch (priori) {
-                case 1 ->
+                case 1 -> {
                     getSFcola1().encolar(pj);
-                case 2 ->
+                    return 1;
+                }
+                    
+                case 2 -> {
                     getSFcola2().encolar(pj);
-                case 3 ->
+                    return 2;
+                }
+                    
+                case 3 -> {
                     getSFcola3().encolar(pj);
+                    return 3;
+                }
+                    
             }
         }
+        return 0;
     }
 
     public void advertise() {
@@ -436,12 +566,16 @@ public class Admin extends Thread {
             }
         } else if (value == "Tie") {
             Zcola1.encolar(Simulador.getZ());
+            IS.UpdateCola(true, 1, getZcola1());
             SFcola1.encolar(Simulador.getSF());
+            IS.UpdateCola(false, 1, getSFcola1());
             Simulador.setZ(null);
             Simulador.setSF(null);
         } else if (value == "Unable") {
             Zcolar.encolar(Simulador.getZ());
+            IS.UpdateCola(true, 4, getZcolar());
             SFcolar.encolar(Simulador.getSF());
+            IS.UpdateCola(false, 4, getSFcolar());
             Simulador.setZ(null);
             Simulador.setSF(null);
         }
