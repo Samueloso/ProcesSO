@@ -210,10 +210,9 @@ public class Admin extends Thread {
     public void setPointsSF(int pointsSF) {
         this.pointsSF = pointsSF;
     }
-    
 
     public void init() {
-        
+
     }
 
     @Override
@@ -249,37 +248,19 @@ public class Admin extends Thread {
     public void Select() {
         Random rand = new Random();
         if (rand.nextDouble() <= 0.8) {
-//            boolean foundZ = false;
-//            boolean foundSF = false;
-//            int i = 0;
-//            while (!foundZ && !foundSF) {
-//                if (!foundZ) {
-//                    Personajes temp = Zelda[i];
-//                    if (!temp.isActivate()) {
-//                        SelectCola(temp, true);
-//                        foundZ = true;
-//                    }
-//                }
-//                if (!foundSF) {
-//                    Personajes temp = StreetFighter[i];
-//                    if (!temp.isActivate()) {
-//                        SelectCola(temp, false);
-//                        foundSF = true;
-//                    }
-//                }
-//                i++;
-//                if (i >= 10) {
-//                    foundZ = true;
-//                    foundSF = true;
-//                }
-//            }
+            Personajes z = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+            Personajes sf = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+            z.CrearPersonaje();
+            sf.CrearPersonaje();
+            SelectCola(z,true);
+            SelectCola(sf,false);
         }
         switch (1) {
             case 1: {
                 if (!Zcola1.ColaVacia()) {
                     Personajes temp = getZcola1().getInicioCola();
                     getZcola1().desencolar_cabeza();
-                    //Función de añadir a la casilla Zelda
+                    getSimulador().setZ(temp);
                     break;
                 }
             }
@@ -287,7 +268,7 @@ public class Admin extends Thread {
                 if (!Zcola2.ColaVacia()) {
                     Personajes temp = getZcola2().getInicioCola();
                     getZcola2().desencolar_cabeza();
-                    //Función de añadir a la casilla Zelda
+                    getSimulador().setZ(temp);
                     break;
                 }
             }
@@ -295,7 +276,7 @@ public class Admin extends Thread {
                 if (!Zcola3.ColaVacia()) {
                     Personajes temp = getZcola3().getInicioCola();
                     getZcola3().desencolar_cabeza();
-                    //Función de añadir a la casilla Zelda
+                    getSimulador().setZ(temp);
                     break;
                 }
             }
@@ -309,7 +290,7 @@ public class Admin extends Thread {
                 if (!SFcola1.ColaVacia()) {
                     Personajes temp = getSFcola1().getInicioCola();
                     getSFcola1().desencolar_cabeza();
-                    //Función de añadir a la casilla Street Fighter
+                    getSimulador().setSF(temp);
                     break;
                 }
             }
@@ -317,7 +298,7 @@ public class Admin extends Thread {
                 if (!SFcola2.ColaVacia()) {
                     Personajes temp = getSFcola2().getInicioCola();
                     getSFcola2().desencolar_cabeza();
-                    //Función de añadir a la casilla Street Fighter
+                    getSimulador().setSF(temp);
                     break;
                 }
             }
@@ -325,7 +306,7 @@ public class Admin extends Thread {
                 if (!SFcola3.ColaVacia()) {
                     Personajes temp = getSFcola3().getInicioCola();
                     getSFcola3().desencolar_cabeza();
-                    //Función de añadir a la casilla Street Fighter
+                    getSimulador().setSF(temp);
                     break;
                 }
             }
@@ -446,7 +427,7 @@ public class Admin extends Thread {
                 Simulador.setZ(null);
                 Simulador.setSF(null);
                 setPointsZ(getPointsZ() + 1);
-                
+
             } else {
                 getWinners().encolar(Simulador.getSF());
                 Simulador.setZ(null);

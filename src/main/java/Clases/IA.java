@@ -14,8 +14,8 @@ import java.util.logging.Logger;
  *
  * @author Radenixlol
  */
-public class IA extends Thread{
-    
+public class IA extends Thread {
+
     private Semaphore sema1;
     private Semaphore sema2;
     private Semaphore sema3;
@@ -24,7 +24,7 @@ public class IA extends Thread{
     private Admin admin;
     private String status = null;
     private boolean Zwinner = false;
-    
+
     public IA(Semaphore sema1, Semaphore sema2, Semaphore sema3, Admin admin) {
         this.sema1 = sema1;
         this.sema2 = sema2;
@@ -32,9 +32,9 @@ public class IA extends Thread{
         this.Z = null;
         this.SF = null;
         this.admin = admin;
-        
+
     }
-    
+
     public Semaphore getSema1() {
         return sema1;
     }
@@ -98,7 +98,7 @@ public class IA extends Thread{
     public void setZwinner(boolean Zwinner) {
         this.Zwinner = Zwinner;
     }
-    
+
     @Override
     public void run() {
         while (true) {
@@ -106,7 +106,7 @@ public class IA extends Thread{
 
                 Work();
 
-                sleep(getAdmin().getTiming()*1000);
+                sleep(getAdmin().getTiming() * 1000);
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
@@ -126,52 +126,43 @@ public class IA extends Thread{
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void Combat(){
+
+    public void Combat() {
         Random rand = new Random();
         double prob = rand.nextDouble();
         if (prob >= 0.0 && prob < 0.4) {
             setStatus("Win");
-            Versus();
-            if (true){
+            boolean result = Versus();
+            if (result) {
                 setZwinner(true);
-            }else{
+            } else {
                 setZwinner(false);
             }
-        } else if(prob >= 0.4 && prob < 0.67){
+        } else if (prob >= 0.4 && prob < 0.67) {
             setStatus("Tie");
-        }else{
+        } else {
             setStatus("Unable");
         }
         getAdmin().advertise();
     }
-    
-    //Aquí haz que retorne un valor, binario preferiblemente, si es uno significa que ganaron los de Zelda, y el otro significa ganó el de Street Fighter
-    public Boolean Versus(){
-    
-        // por ahora el while me restara puntos de vida con la fuerza del oponente hasta que lleguen a 0
-         while (Z.getVida()!=0 || SF.getVida()!=0){
-             
-             int Z_vs_SF = Z.getVida()-SF.getFuerza();
-             Z.setVida(Z_vs_SF);
-             int SF_vs_Z = SF.getVida() - Z.getFuerza();
-             SF.setVida(SF_vs_Z);
-             
-             
-         
-         }
-         
-         if(SF.getVida()==0){
-            return true;
-         }
-         else{
-            return false;
-         }
-        
-        
-    }
-    
 
-    
-    
+    //Aquí haz que retorne un valor, binario preferiblemente, si es uno significa que ganaron los de Zelda, y el otro significa ganó el de Street Fighter
+    public Boolean Versus() {
+
+        // por ahora el while me restara puntos de vida con la fuerza del oponente hasta que lleguen a 0
+        while (Z.getVida() != 0 || SF.getVida() != 0) {
+
+            int Z_vs_SF = Z.getVida() - SF.getFuerza();
+            Z.setVida(Z_vs_SF);
+            int SF_vs_Z = SF.getVida() - Z.getFuerza();
+            SF.setVida(SF_vs_Z);
+        }
+        if (SF.getVida() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }
