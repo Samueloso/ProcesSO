@@ -234,26 +234,26 @@ public class Admin extends Thread {
         Personajes SF8 =new Personajes(0,0,"",0,0,0,0,0);
         Personajes Z9=new Personajes(0,0,"",0,0,0,0,0);
         Personajes SF9=new Personajes(0,0,"",0,0,0,0,0);
-        Z0.CrearPersonaje();
-        SF0.CrearPersonaje();
-        Z1.CrearPersonaje();
-        SF1.CrearPersonaje();
-        Z2.CrearPersonaje();
-        SF2.CrearPersonaje();
-        Z3.CrearPersonaje();
-        SF3.CrearPersonaje();
-        Z4.CrearPersonaje();
-        SF4.CrearPersonaje();
-        Z5.CrearPersonaje();
-        SF5.CrearPersonaje();
-        Z6.CrearPersonaje();
-        SF6.CrearPersonaje();
-        Z7.CrearPersonaje();
-        SF7.CrearPersonaje();
-        Z8.CrearPersonaje();
-        SF8.CrearPersonaje();
-        Z9.CrearPersonaje();
-        SF9.CrearPersonaje();
+        Z0.CrearPersonajeZ();
+        SF0.CrearPersonajeSF();
+        Z1.CrearPersonajeZ();
+        SF1.CrearPersonajeSF();
+        Z2.CrearPersonajeZ();
+        SF2.CrearPersonajeSF();
+        Z3.CrearPersonajeZ();
+        SF3.CrearPersonajeSF();
+        Z4.CrearPersonajeZ();
+        SF4.CrearPersonajeSF();
+        Z5.CrearPersonajeZ();
+        SF5.CrearPersonajeSF();
+        Z6.CrearPersonajeZ();
+        SF6.CrearPersonajeSF();
+        Z7.CrearPersonajeZ();
+        SF7.CrearPersonajeSF();
+        Z8.CrearPersonajeZ();
+        SF8.CrearPersonajeSF();
+        Z9.CrearPersonajeZ();
+        SF9.CrearPersonajeSF();
         SelectCola(Z0, true);
         SelectCola(SF0, false);
         SelectCola(Z1, true);
@@ -320,8 +320,8 @@ public class Admin extends Thread {
         if (rand.nextDouble() <= 0.8) {
             Personajes z = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
             Personajes sf = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
-            z.CrearPersonaje();
-            sf.CrearPersonaje();
+            z.CrearPersonajeZ();
+            sf.CrearPersonajeSF();
             int enteroz = SelectCola(z,true);
             switch (enteroz) {
                 case 1 -> {
