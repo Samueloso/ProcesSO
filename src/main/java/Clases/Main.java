@@ -17,9 +17,9 @@ public class Main {
         // TODO code application logic here
         Personajes pj=new Personajes(0,0,"",0,0,0,0,0);
         Personajes pj1=new Personajes(0,0,"",0,0,0,0,0);
-        pj.CrearPersonaje();
+        pj.CrearPersonajeZ();
     
-        pj1.CrearPersonaje();
+        pj1.CrearPersonajeZ();
         Cola cola = new Cola();
         cola.encolar(pj);
         cola.encolar(pj);
