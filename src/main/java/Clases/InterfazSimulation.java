@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import java.awt.Color;
+
 /**
  *
  * @author Radenixlol
@@ -11,7 +13,12 @@ package Clases;
 public class InterfazSimulation extends javax.swing.JFrame {
 
     Admin admin = new Admin(this);
-
+    Color green = new Color(0, 153, 0);
+    Color red = new Color(255, 0, 0);
+    Color gray = new Color(102, 102, 102);
+    Color white = new Color(255, 255, 255);
+    Lista lista = new Lista();
+    boolean visibility = false;
     /**
      * Creates new form InterfazSimulation
      */
@@ -79,13 +86,60 @@ public class InterfazSimulation extends javax.swing.JFrame {
     public void UpdateTextZ() {
         String nameZ = admin.getSimulador().getZ().getNombre();
         CasillaZ.setText(nameZ);
-        
+
     }
-    
+
     public void UpdateTextSF() {
         String nameSF = admin.getSimulador().getSF().getNombre();
         CasillaSF.setText(nameSF);
-        
+
+    }
+
+    public void SetStatusAdmin(String t) {
+        StatusAdmin.setText(t);
+    }
+
+    public void announce(String value) {
+        if (value == "Tie") {
+            StatusZ.setBackground(gray);
+            StatusZ.setText("TIE");
+            StatusSF.setBackground(gray);
+            StatusSF.setText("TIE");
+        } else if (value == "Unable") {
+            StatusZ.setBackground(white);
+            StatusZ.setText("CANCELLED");
+            StatusSF.setBackground(white);
+            StatusSF.setText("CANCELLED");
+        }
+
+    }
+
+    public void announceWinner(boolean Z) {
+        if (Z) {
+            StatusZ.setBackground(green);
+            StatusZ.setText("WIN");
+            StatusSF.setBackground(red);
+            StatusSF.setText("LOSE");
+            int points = admin.getPointsZ();
+            admin.setPointsZ(points);
+            CountZ.setText(Integer.toString(points));
+        } else {
+            StatusZ.setBackground(red);
+            StatusZ.setText("LOSE");
+            StatusSF.setBackground(green);
+            StatusSF.setText("WIN");
+            int points = admin.getPointsSF();
+            admin.setPointsSF(points);
+            CountSF.setText(Integer.toString(points));
+        }
+
+    }
+
+    public void setWhite() {
+        StatusZ.setBackground(white);
+        StatusZ.setText("");
+        StatusSF.setBackground(white);
+        StatusSF.setText("");
     }
 
     /**
@@ -130,10 +184,13 @@ public class InterfazSimulation extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        seconds = new javax.swing.JSpinner();
-        jButton2 = new javax.swing.JButton();
+        BotonWinners = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        seconds = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        StatusAdmin = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,7 +204,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola1Z.setRows(5);
         Scroll1Z.setViewportView(Cola1Z);
 
-        jPanel1.add(Scroll1Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 250, 30));
+        jPanel1.add(Scroll1Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 250, 60));
 
         Scroll2Z.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll2Z.setFocusable(false);
@@ -157,7 +214,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola2Z.setRows(5);
         Scroll2Z.setViewportView(Cola2Z);
 
-        jPanel1.add(Scroll2Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 250, 30));
+        jPanel1.add(Scroll2Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 250, 60));
 
         Scroll3Z3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll3Z3.setFocusable(false);
@@ -167,7 +224,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola3Z.setRows(5);
         Scroll3Z3.setViewportView(Cola3Z);
 
-        jPanel1.add(Scroll3Z3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 250, 30));
+        jPanel1.add(Scroll3Z3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 250, 60));
 
         ScrollRZ.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         ScrollRZ.setFocusable(false);
@@ -177,7 +234,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         ColaRZ.setRows(5);
         ScrollRZ.setViewportView(ColaRZ);
 
-        jPanel1.add(ScrollRZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 250, 30));
+        jPanel1.add(ScrollRZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 250, 60));
 
         Scroll1SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll1SF.setFocusable(false);
@@ -187,7 +244,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola1SF.setRows(5);
         Scroll1SF.setViewportView(Cola1SF);
 
-        jPanel1.add(Scroll1SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 90, 250, 30));
+        jPanel1.add(Scroll1SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 90, 250, 60));
 
         Scroll2SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll2SF.setFocusable(false);
@@ -197,7 +254,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola2SF.setRows(5);
         Scroll2SF.setViewportView(Cola2SF);
 
-        jPanel1.add(Scroll2SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, 250, 30));
+        jPanel1.add(Scroll2SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, 250, 60));
 
         Scroll3SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll3SF.setFocusable(false);
@@ -207,7 +264,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola3SF.setRows(5);
         Scroll3SF.setViewportView(Cola3SF);
 
-        jPanel1.add(Scroll3SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 280, 250, 30));
+        jPanel1.add(Scroll3SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 280, 250, 60));
 
         ScrollRSF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         ScrollRSF.setFocusable(false);
@@ -217,7 +274,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         ColaRSF.setRows(5);
         ScrollRSF.setViewportView(ColaRSF);
 
-        jPanel1.add(ScrollRSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 390, 250, 30));
+        jPanel1.add(ScrollRSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 390, 250, 60));
 
         CasillaZ.setBackground(new java.awt.Color(0, 110, 168));
         CasillaZ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -225,10 +282,10 @@ public class InterfazSimulation extends javax.swing.JFrame {
         jPanel1.add(CasillaZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 71, 270, 350));
 
         StatusZ.setEditable(false);
-        StatusZ.setBackground(new java.awt.Color(0, 153, 0));
+        StatusZ.setBackground(new java.awt.Color(102, 102, 102));
         StatusZ.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         StatusZ.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        StatusZ.setText("WIN");
+        StatusZ.setText("CANCELADO");
         StatusZ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StatusZActionPerformed(evt);
@@ -283,7 +340,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel4.setText("Cola de Refuerzo");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 370, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Cola 1");
@@ -307,11 +364,15 @@ public class InterfazSimulation extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel10.setText("Street Fighter");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1187, 15, -1, -1));
-        jPanel1.add(seconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 490, 70, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 30, -1, -1));
 
-        jButton2.setText("Mostrar");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 490, -1, -1));
+        BotonWinners.setText("Mostrar");
+        BotonWinners.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonWinnersActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BotonWinners, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 490, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Segundos de duración de la simulación");
@@ -320,6 +381,35 @@ public class InterfazSimulation extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel12.setText("Ganadores");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 470, -1, -1));
+
+        seconds.setEditable(false);
+        seconds.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        seconds.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        seconds.setText("10");
+        jPanel1.add(seconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton2.setText("-");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, -1, -1));
+
+        StatusAdmin.setEditable(false);
+        StatusAdmin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        StatusAdmin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(StatusAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 490, 260, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -343,8 +433,44 @@ public class InterfazSimulation extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_StatusZActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int t = admin.getTiming();
+        if (t > 1 && t <= 30) {
 
-    
+            t--;
+            seconds.setText(Integer.toString(t));
+            admin.setTiming(t);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int t = admin.getTiming();
+        if (t >= 1 && t < 30) {
+
+            t++;
+            seconds.setText(Integer.toString(t));
+            admin.setTiming(t);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BotonWinnersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonWinnersActionPerformed
+        // TODO add your handling code here:
+        if (!visibility){
+            Cola winners = admin.getWinners();
+            lista.listado(winners);
+            lista.setVisible(true);
+            visibility = true;
+            BotonWinners.setText("Ocultar");
+        }else{
+            lista.setVisible(false);
+            visibility = false;
+            BotonWinners.setText("Mostrar");
+        }
+        
+    }//GEN-LAST:event_BotonWinnersActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -390,6 +516,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonWinners;
     private javax.swing.JLabel CasillaSF;
     private javax.swing.JLabel CasillaZ;
     private javax.swing.JTextArea Cola1SF;
@@ -410,8 +537,10 @@ public class InterfazSimulation extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scroll3Z3;
     private javax.swing.JScrollPane ScrollRSF;
     private javax.swing.JScrollPane ScrollRZ;
+    private javax.swing.JTextField StatusAdmin;
     private javax.swing.JTextField StatusSF;
     private javax.swing.JTextField StatusZ;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -426,6 +555,6 @@ public class InterfazSimulation extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSpinner seconds;
+    private javax.swing.JTextField seconds;
     // End of variables declaration//GEN-END:variables
 }

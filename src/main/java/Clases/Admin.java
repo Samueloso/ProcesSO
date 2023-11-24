@@ -36,6 +36,7 @@ public class Admin extends Thread {
     private int ciclos;
     private int pointsZ;
     private int pointsSF;
+    private String status;
     private InterfazSimulation IS;
 
     public Admin(InterfazSimulation IS) {
@@ -58,6 +59,7 @@ public class Admin extends Thread {
         this.ciclos = 0;
         this.pointsZ = 0;
         this.pointsSF = 0;
+        this.status = "esperando, decidiendo o anunciado elresultado";
         this.IS = IS;
     }
 
@@ -213,27 +215,36 @@ public class Admin extends Thread {
         this.pointsSF = pointsSF;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+        IS.SetStatusAdmin(getStatus());
+    }
+
     public void init() {
-        Personajes Z0=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF0 =new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z1=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF1=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z2=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF2 =new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z3=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF3=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z4=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF4 =new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z5=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF5=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z6=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF6 =new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z7=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF7=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z8=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF8 =new Personajes(0,0,"",0,0,0,0,0);
-        Personajes Z9=new Personajes(0,0,"",0,0,0,0,0);
-        Personajes SF9=new Personajes(0,0,"",0,0,0,0,0);
+        Personajes Z0 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF0 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z1 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF1 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z2 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF2 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z3 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF3 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z4 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF4 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z5 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF5 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z6 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF6 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z7 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF7 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z8 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF8 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes Z9 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
+        Personajes SF9 = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
         Z0.CrearPersonajeZ();
         SF0.CrearPersonajeSF();
         Z1.CrearPersonajeZ();
@@ -282,7 +293,7 @@ public class Admin extends Thread {
         IS.UpdateCola(false, 3, getSFcola3());
         IS.UpdateCola(true, 4, getZcolar());
         IS.UpdateCola(false, 4, getSFcolar());
-       
+
         getSimulador().start();
         this.start();
     }
@@ -290,24 +301,21 @@ public class Admin extends Thread {
     @Override
     public void run() {
         while (true) {
-            try {
-                
-                Work();
-                System.out.println("Chambeando");
-                sleep(getTiming() * 1000);
-
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Work();
         }
 
     }
 
     public void Work() {
         try {
+            IS.setWhite();
             Check();
+            setStatus("Esperando");
+            sleep((getTiming() * 1000) / 3);
             getSema3().acquire(1);
             getSema1().acquire(1);
+            setStatus("Decidiendo");
+            sleep((getTiming() * 1000) / 3);
             Select();
             getSema1().release();
             getSema2().release();
@@ -318,12 +326,12 @@ public class Admin extends Thread {
 
     public void Select() {
         Random rand = new Random();
-        if (rand.nextDouble() <= 0.8) {
+        if (rand.nextDouble() <= 0.8 && getCiclos() >= 2) {
             Personajes z = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
             Personajes sf = new Personajes(0, 0, "", 0, 0, 0, 0, 0);
             z.CrearPersonajeZ();
             sf.CrearPersonajeSF();
-            int enteroz = SelectCola(z,true);
+            int enteroz = SelectCola(z, true);
             switch (enteroz) {
                 case 1 -> {
                     IS.UpdateCola(true, 1, getZcola1());
@@ -335,7 +343,7 @@ public class Admin extends Thread {
                     IS.UpdateCola(true, 3, getZcola3());
                 }
             }
-            int enterosf = SelectCola(sf,false);
+            int enterosf = SelectCola(sf, false);
             switch (enterosf) {
                 case 1 -> {
                     IS.UpdateCola(false, 1, getSFcola1());
@@ -348,6 +356,10 @@ public class Admin extends Thread {
                 }
             }
         }
+        if (getCiclos() >= 2) {
+            setCiclos(0);
+        }
+        setCiclos(getCiclos() + 1);
         switch (1) {
             case 1: {
                 if (!Zcola1.ColaVacia()) {
@@ -449,7 +461,7 @@ public class Admin extends Thread {
                     IS.UpdateCola(true, 2, getZcola2());
                     getZcola1().encolar(temp1);
                     IS.UpdateCola(true, 1, getZcola1());
-                    
+
                 } else {
                     count++;
                     temp.setContador(count);
@@ -521,17 +533,17 @@ public class Admin extends Thread {
                     getZcola1().encolar(pj);
                     return 1;
                 }
-                    
+
                 case 2 -> {
                     getZcola2().encolar(pj);
                     return 2;
                 }
-                    
+
                 case 3 -> {
                     getZcola3().encolar(pj);
                     return 3;
                 }
-                    
+
             }
         } else {
             switch (priori) {
@@ -539,17 +551,17 @@ public class Admin extends Thread {
                     getSFcola1().encolar(pj);
                     return 1;
                 }
-                    
+
                 case 2 -> {
                     getSFcola2().encolar(pj);
                     return 2;
                 }
-                    
+
                 case 3 -> {
                     getSFcola3().encolar(pj);
                     return 3;
                 }
-                    
+
             }
         }
         return 0;
@@ -564,13 +576,14 @@ public class Admin extends Thread {
                 Simulador.setZ(null);
                 Simulador.setSF(null);
                 setPointsZ(getPointsZ() + 1);
-
+                
             } else {
                 getWinners().encolar(Simulador.getSF());
                 Simulador.setZ(null);
                 Simulador.setSF(null);
                 setPointsSF(getPointsSF() + 1);
             }
+            IS.announceWinner(win);
         } else if (value == "Tie") {
             Zcola1.encolar(Simulador.getZ());
             IS.UpdateCola(true, 1, getZcola1());
@@ -578,6 +591,7 @@ public class Admin extends Thread {
             IS.UpdateCola(false, 1, getSFcola1());
             Simulador.setZ(null);
             Simulador.setSF(null);
+            IS.announce(value);
         } else if (value == "Unable") {
             Zcolar.encolar(Simulador.getZ());
             IS.UpdateCola(true, 4, getZcolar());
@@ -585,7 +599,7 @@ public class Admin extends Thread {
             IS.UpdateCola(false, 4, getSFcolar());
             Simulador.setZ(null);
             Simulador.setSF(null);
+            IS.announce(value);
         }
     }
-
 }
