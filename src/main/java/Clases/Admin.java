@@ -355,7 +355,7 @@ public class Admin extends Thread {
                     getZcola1().desencolar_cabeza();
                     IS.UpdateCola(true, 1, getZcola1());
                     getSimulador().setZ(temp);
-                    IS.UpdateImage();
+                    IS.UpdateTextZ();
                     break;
                 }
             }
@@ -365,7 +365,7 @@ public class Admin extends Thread {
                     getZcola2().desencolar_cabeza();
                     IS.UpdateCola(true, 2, getZcola2());
                     getSimulador().setZ(temp);
-                    IS.UpdateImage();
+                    IS.UpdateTextZ();
                     break;
                 }
             }
@@ -375,7 +375,7 @@ public class Admin extends Thread {
                     getZcola3().desencolar_cabeza();
                     IS.UpdateCola(true, 3, getZcola3());
                     getSimulador().setZ(temp);
-                    IS.UpdateImage();
+                    IS.UpdateTextZ();
                     break;
                 }
             }
@@ -391,7 +391,7 @@ public class Admin extends Thread {
                     getSFcola1().desencolar_cabeza();
                     IS.UpdateCola(false, 1, getSFcola1());
                     getSimulador().setSF(temp);
-                    IS.UpdateImage();
+                    IS.UpdateTextSF();
                     break;
                 }
             }
@@ -401,7 +401,7 @@ public class Admin extends Thread {
                     getSFcola2().desencolar_cabeza();
                     IS.UpdateCola(false, 2, getSFcola2());
                     getSimulador().setSF(temp);
-                    IS.UpdateImage();
+                    IS.UpdateTextSF();
                     break;
                 }
             }
@@ -411,7 +411,7 @@ public class Admin extends Thread {
                     getSFcola3().desencolar_cabeza();
                     IS.UpdateCola(false, 3, getSFcola3());
                     getSimulador().setSF(temp);
-                    IS.UpdateImage();
+                    IS.UpdateTextSF();
                     break;
                 }
             }
