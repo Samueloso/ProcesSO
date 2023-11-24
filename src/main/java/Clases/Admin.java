@@ -282,6 +282,7 @@ public class Admin extends Thread {
         IS.UpdateCola(false, 3, getSFcola3());
         IS.UpdateCola(true, 4, getZcolar());
         IS.UpdateCola(false, 4, getSFcolar());
+       
         getSimulador().start();
         this.start();
     }
@@ -290,7 +291,7 @@ public class Admin extends Thread {
     public void run() {
         while (true) {
             try {
-
+                
                 Work();
                 System.out.println("Chambeando");
                 sleep(getTiming() * 1000);

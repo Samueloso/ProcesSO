@@ -265,6 +265,7 @@ public class Personajes {
         } else if (contadorN >= 3) {
 
             setPrioridad(3);
+            System.out.println("SE CREO PRIORIDAD 3 ");
 
         }
         
