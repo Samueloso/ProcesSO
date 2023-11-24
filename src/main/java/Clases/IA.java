@@ -152,19 +152,117 @@ public class IA extends Thread {
 
     //Aquí haz que retorne un valor, binario preferiblemente, si es uno significa que ganaron los de Zelda, y el otro significa ganó el de Street Fighter
     public Boolean Versus() {
-           
+            Random rand = new Random();
         // por ahora el while me restara puntos de vida con la fuerza del oponente hasta que lleguen a 0
         while (Z.getVida() >= 0 && SF.getVida() >= 0) {
-
+            
+            if(rand.nextDouble()<0.1){            
+                
+             //Turno zelda
+            int Z_vs_SF = Z.getVida() - SF.getFuerza()-20;
+            Z.setVida(Z_vs_SF);
+            System.out.println("CRITICAL PARA:" + SF.getNombre());
+            System.out.println("Vida de Zelda: ");
+            System.out.println(Z.getVida());}
+            
+            else{    
+                
             int Z_vs_SF = Z.getVida() - SF.getFuerza();
             Z.setVida(Z_vs_SF);
             System.out.println("Vida de Zelda: ");
             System.out.println(Z.getVida());
+            }
+            
+            //turno sf
+            
+            if(rand.nextDouble()<0.1){
+                
+            int SF_vs_Z = SF.getVida() - Z.getFuerza()-20;
+            System.out.println("CRITICAL PARA:"+SF.getNombre());
+            System.out.println("Vida de SF: ");
+            SF.setVida(SF_vs_Z);
+            System.out.println(SF.getVida());}
+            else{
             int SF_vs_Z = SF.getVida() - Z.getFuerza();
             System.out.println("Vida de SF: ");
             SF.setVida(SF_vs_Z);
             System.out.println(SF.getVida());
+            }
+            
+            //tuno zelda
+            
+            if(rand.nextDouble()<0.3){
+               int recupera =Z.getVida()+15 ;
+               Z.setVida(recupera);
+                System.out.println(Z.getNombre()+ " "+"Se ha curado");
+            }else{
+               int sangra =Z.getVida()-4 ;
+               Z.setVida(sangra);
+                System.out.println(Z.getNombre()+ " "+"Herido");
+            
+            }
+            
+            //Turno sf
+            
+            if(rand.nextDouble()<0.3){
+            int recupera =SF.getVida()+15 ;
+            SF.setVida(recupera);
+            System.out.println(SF.getNombre()+ " "+"Se ha curado");
+            }else{
+            
+             int sangra =SF.getVida()-4 ;
+             Z.setVida(sangra);
+             System.out.println(SF.getNombre()+ " "+"Herido");
+            }
+            
+            //turno zelda
+            
+            if(rand.nextDouble()<0.5){
+                
+                int dañoskill = 25;
+                int vidaSF=SF.getVida();
+                
+                if (SF.getAgilidad()<Z.getAgilidad()){
+                    if (rand.nextDouble()<0.1){SF.setVida(vidaSF-dañoskill-100);}
+                    else{SF.setVida(vidaSF-dañoskill);}
+                    
+                    
+                }
+                else{
+                    System.out.println("Fue esquivado");
+                }
+            
+            }
+            
+            //turno SF
+            
+                if(rand.nextDouble()<0.5){
+                
+                int dañoskill = 25;
+                int vidaZ=Z.getVida();
+                
+                if (SF.getAgilidad()>Z.getAgilidad()){
+                    if (rand.nextDouble()<0.1){Z.setVida(vidaZ-dañoskill-100);}
+                    else{SF.setVida(vidaZ-dañoskill);}
+                    
+                    
+                }
+                else{
+                    System.out.println("Fue esquivado");
+                }
+            
+            }
+            
+            
+            
+            
+            
+            
+            
+
         }
+        
+        
         if (SF.getVida() <= 0) {
             return true;
         } else {
