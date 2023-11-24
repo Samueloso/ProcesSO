@@ -278,7 +278,7 @@ public class Personajes {
         
     // CAMBIAR ESTO NO PUEDO USAR ARRAY LIST 
     
-        String[] nombres = {"Link", "Ganondorf", "Zelda", "Sidon", "Riju", "Tureli", "Yunobo", "Rauru", "Zonai", "Chuchu", "Prunia", "Kolog"};
+        String[] nombres = {"Link", "Ganondorf", "Zelda", "Sidon", "Riju", "Tureli", "Yunobo", "Rauru", "Mineru", "Prunia", "Kolog"};
         
         //selecciono nombre al alzar
         
