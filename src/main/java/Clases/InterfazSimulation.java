@@ -80,30 +80,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
     }
 
     public void UpdateImage() {
-//        String nameZ = admin.getSimulador().getZ().getNombre();
-//        String url;
-//        if (nameZ == "Link") {
-//            url = "/Imagenes/Link.png";
-//        } else if (nameZ == "Ganondorf") {
-//            url = "/Imagenes/Ganondorf.png";
-//        } else if (nameZ == "Zelda") {
-//            url = "/Imagenes/Zelda.png";
-//        } else if (nameZ == "Sidon") {
-//            url = "/Imagenes/Sidon.png";
-//        } else if (nameZ == "Riju") {
-//            url = "/Imagenes/Riju.png";
-//        } else if (nameZ == "Yunobo") {
-//            url = "/Imagenes/Yunobo.png";
-//        } else if (nameZ == "Rauru") {
-//            url = "/Imagenes/Rauru.png";
-//        } else if (nameZ == "Prunia") {
-//            url = "/Imagenes/Prunia.png";
-//        } else {
-//            url = "/Imagenes/Kolog.png";
-//        }
-//        System.out.println( getClass());
-//        Icon mIcono = new javax.swing.ImageIcon(new javax.swing.ImageIcon(getClass().getResource("Kolog.png")).getImage().getScaledInstance(CasillaZ.getWidth(), CasillaZ.getHeight(), 0));
-//        CasillaZ.setIcon(mIcono);
+        jLabel1.setIcon(new ImageIcon(getClass().getResource("Zelda.png")));
     }   
 
     /**
@@ -138,6 +115,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         CasillaSF = new javax.swing.JLabel();
         CountZ = new javax.swing.JTextField();
         CountSF = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -235,6 +213,8 @@ public class InterfazSimulation extends javax.swing.JFrame {
         CountSF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CountSF.setText("0");
 
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -252,7 +232,9 @@ public class InterfazSimulation extends javax.swing.JFrame {
                         .addComponent(CasillaZ, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(409, 409, 409)
-                        .addComponent(CountZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(CountZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                        .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -264,7 +246,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
                                 .addComponent(Scroll2SF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(ScrollRSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(Scroll1SF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 304, Short.MAX_VALUE))
+                        .addGap(0, 297, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(CountSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(712, 712, 712))))
@@ -278,11 +260,17 @@ public class InterfazSimulation extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CountZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CountSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(194, 194, 194)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(CountZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CountSF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(64, 64, 64))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(55, 55, 55)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(CasillaSF, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -336,6 +324,8 @@ public class InterfazSimulation extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_StatusZActionPerformed
 
+
+    
     /**
      * @param args the command line arguments
      */
@@ -403,6 +393,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
     private javax.swing.JScrollPane ScrollRZ;
     private javax.swing.JTextField StatusSF;
     private javax.swing.JTextField StatusZ;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

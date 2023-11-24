@@ -25,7 +25,7 @@ public class IA extends Thread {
     private String status = null;
     private boolean Zwinner = false;
 
-    public IA(Semaphore sema1, Semaphore sema2, Semaphore sema3, Admin admin) {
+    public IA(Semaphore sema1, Semaphore sema2, Semaphore sema3, Admin admin ) {
         this.sema1 = sema1;
         this.sema2 = sema2;
         this.sema3 = sema3;
