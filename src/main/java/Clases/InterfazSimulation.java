@@ -4,6 +4,7 @@
  */
 package Clases;
 
+import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -79,32 +80,13 @@ public class InterfazSimulation extends javax.swing.JFrame {
         }
     }
 
-    public void UpdateImage() {
-//        String nameZ = admin.getSimulador().getZ().getNombre();
-//        String url;
-//        if (nameZ == "Link") {
-//            url = "/Imagenes/Link.png";
-//        } else if (nameZ == "Ganondorf") {
-//            url = "/Imagenes/Ganondorf.png";
-//        } else if (nameZ == "Zelda") {
-//            url = "/Imagenes/Zelda.png";
-//        } else if (nameZ == "Sidon") {
-//            url = "/Imagenes/Sidon.png";
-//        } else if (nameZ == "Riju") {
-//            url = "/Imagenes/Riju.png";
-//        } else if (nameZ == "Yunobo") {
-//            url = "/Imagenes/Yunobo.png";
-//        } else if (nameZ == "Rauru") {
-//            url = "/Imagenes/Rauru.png";
-//        } else if (nameZ == "Prunia") {
-//            url = "/Imagenes/Prunia.png";
-//        } else {
-//            url = "/Imagenes/Kolog.png";
-//        }
-//        System.out.println( getClass());
-//        Icon mIcono = new javax.swing.ImageIcon(new javax.swing.ImageIcon(getClass().getResource("Kolog.png")).getImage().getScaledInstance(CasillaZ.getWidth(), CasillaZ.getHeight(), 0));
-//        CasillaZ.setIcon(mIcono);
-    }   
+    public void UpdateText() {
+        String nameZ = admin.getSimulador().getZ().getNombre();
+        CasillaZ.setText(nameZ);
+        String nameSF = admin.getSimulador().getSF().getNombre();
+        CasillaSF.setText(nameSF);
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -207,6 +189,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
 
         CasillaZ.setBackground(new java.awt.Color(0, 110, 168));
         CasillaZ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ.setIcon(new javax.swing.ImageIcon("D:\\UNIMET\\Trimestre 10\\Sistemas Operativos\\ProcesSO\\src\\main\\java\\Imagenes\\Zelda.png")); // NOI18N
         CasillaZ.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         StatusZ.setHorizontalAlignment(javax.swing.JTextField.CENTER);
