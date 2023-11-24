@@ -19,6 +19,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
     Color white = new Color(255, 255, 255);
     Lista lista = new Lista();
     boolean visibility = false;
+
     /**
      * Creates new form InterfazSimulation
      */
@@ -85,161 +86,208 @@ public class InterfazSimulation extends javax.swing.JFrame {
 
     public void UpdateTextZ() {
         String nameZ = admin.getSimulador().getZ().getNombre();
-        
-        if(nameZ=="Link"){
-        
-        CasillaZ.setVisible(true);
-        }else{
-        
-        CasillaZ.setVisible(false);
-        }
-        if(nameZ=="Ganondorf"){
-        
-        CasillaZ1.setVisible(true);
-        }else{
-        CasillaZ1.setVisible(false);
-        }        
-        if(nameZ=="Zelda"){
-       
-        CasillaZ2.setVisible(true);
-        }else{
-      
-        CasillaZ2.setVisible(false);
-        }        
-        if(nameZ=="Yunobo"){
-      
-        CasillaZ3.setVisible(true);
-        }else{
-  
-        CasillaZ3.setVisible(false);
-        }        
-        if(nameZ=="Tureli"){
-   
-        CasillaZ4.setVisible(true);
-        }else{
-       
-        CasillaZ4.setVisible(false);
-        }        
-        if(nameZ=="Sidon"){
-       
-        CasillaZ5.setVisible(true);
-        }else{
+        CasillaZ.setText(nameZ);
 
-        CasillaZ5.setVisible(false);
-        }
-        
-        if(nameZ=="Riju"){
-        
-        CasillaZ6.setVisible(true);
-        }else{
-        
-        CasillaZ6.setVisible(false);
-        }
-        if(nameZ=="Rauru"){
-        
-        CasillaZ7.setVisible(true);
-        }else{
-        CasillaZ7.setVisible(false);
-        }        
-        if(nameZ=="Prunia"){
-       
-        CasillaZ8.setVisible(true);
-        }else{
-      
-        CasillaZ8.setVisible(false);
-        }        
-        if(nameZ=="Mineru"){
-      
-        CasillaZ9.setVisible(true);
-        }else{
-  
-        CasillaZ9.setVisible(false);
-        }        
-        if(nameZ=="Kolog"){
-   
-        CasillaZ10.setVisible(true);
-        }else{
-       
-        CasillaZ10.setVisible(false);
-        }        
-  
-        
+//        if (nameZ == "Link") {
+//
+//            CasillaZ.setVisible(true);
+//        } else {
+//
+//            CasillaZ.setVisible(false);
+//        }
+//        if (nameZ == "Ganondorf") {
+//
+//            CasillaZ1.setVisible(true);
+//        } else {
+//            CasillaZ1.setVisible(false);
+//        }
+//        if (nameZ == "Zelda") {
+//
+//            CasillaZ2.setVisible(true);
+//        } else {
+//
+//            CasillaZ2.setVisible(false);
+//        }
+//        if (nameZ == "Yunobo") {
+//
+//            CasillaZ3.setVisible(true);
+//        } else {
+//
+//            CasillaZ3.setVisible(false);
+//        }
+//        if (nameZ == "Tureli") {
+//
+//            CasillaZ4.setVisible(true);
+//        } else {
+//
+//            CasillaZ4.setVisible(false);
+//        }
+//        if (nameZ == "Sidon") {
+//
+//            CasillaZ5.setVisible(true);
+//        } else {
+//
+//            CasillaZ5.setVisible(false);
+//        }
+//
+//        if (nameZ == "Riju") {
+//
+//            CasillaZ6.setVisible(true);
+//        } else {
+//
+//            CasillaZ6.setVisible(false);
+//        }
+//        if (nameZ == "Rauru") {
+//
+//            CasillaZ7.setVisible(true);
+//        } else {
+//            CasillaZ7.setVisible(false);
+//        }
+//        if (nameZ == "Prunia") {
+//
+//            CasillaZ8.setVisible(true);
+//        } else {
+//
+//            CasillaZ8.setVisible(false);
+//        }
+//        if (nameZ == "Mineru") {
+//
+//            CasillaZ9.setVisible(true);
+//        } else {
+//
+//            CasillaZ9.setVisible(false);
+//        }
+//        if (nameZ == "Kolog") {
+//
+//            CasillaZ10.setVisible(true);
+//        } else {
+//
+//            CasillaZ10.setVisible(false);
+//        }
+
     }
 
     public void UpdateTextSF() {
         String nameSF = admin.getSimulador().getSF().getNombre();
-       
-        if(nameSF=="Viper"){
-        
-        CasillaSF.setVisible(true);
-        }else{
-        
-        CasillaSF.setVisible(false);
-        }
-        if(nameSF=="Vega"){
-        
-        CasillaSF1.setVisible(true);
-        }else{
-        CasillaSF1.setVisible(false);
-        }        
-        if(nameSF=="Ryu"){
-       
-        CasillaSF2.setVisible(true);
-        }else{
-      
-        CasillaSF2.setVisible(false);
-        }        
-        if(nameSF=="M.Bison"){
-      
-        CasillaSF3.setVisible(true);
-        }else{
-  
-        CasillaSF3.setVisible(false);
-        }        
-        if(nameSF=="Ken Masters"){
-   
-        CasillaSF4.setVisible(true);
-        }else{
-       
-        CasillaSF4.setVisible(false);
-        }        
-        if(nameSF=="Chun-Li"){
-       
-        CasillaSF5.setVisible(true);
-        }else{
+        CasillaSF.setText(nameSF);
 
-        CasillaSF5.setVisible(false);
-        }
-        
-        if(nameSF=="Gouken"){
-        
-        CasillaSF6.setVisible(true);
-        }else{
-        
-        CasillaSF6.setVisible(false);
-        }
-        if(nameSF=="Cammy"){
-        
-        CasillaSF7.setVisible(true);
-        }else{
-        CasillaSF7.setVisible(false);
-        }        
-        if(nameSF=="Blanka"){
-       
-        CasillaSF8.setVisible(true);
-        }else{
-      
-        CasillaSF8.setVisible(false);
-        }        
-        if(nameSF=="Akuma"){
-      
-        CasillaSF9.setVisible(true);
-        }else{
-  
-        CasillaSF9.setVisible(false);
-        }        
+//        if (nameSF == "Viper") {
+//
+//            CasillaSF.setVisible(true);
+//        } else {
+//
+//            CasillaSF.setVisible(false);
+//        }
+//        if (nameSF == "Vega") {
+//
+//            CasillaSF1.setVisible(true);
+//        } else {
+//            CasillaSF1.setVisible(false);
+//        }
+//        if (nameSF == "Ryu") {
+//
+//            CasillaSF2.setVisible(true);
+//        } else {
+//
+//            CasillaSF2.setVisible(false);
+//        }
+//        if (nameSF == "M.Bison") {
+//
+//            CasillaSF3.setVisible(true);
+//        } else {
+//
+//            CasillaSF3.setVisible(false);
+//        }
+//        if (nameSF == "Ken Masters") {
+//
+//            CasillaSF4.setVisible(true);
+//        } else {
+//
+//            CasillaSF4.setVisible(false);
+//        }
+//        if (nameSF == "Chun-Li") {
+//
+//            CasillaSF5.setVisible(true);
+//        } else {
+//
+//            CasillaSF5.setVisible(false);
+//        }
+//
+//        if (nameSF == "Gouken") {
+//
+//            CasillaSF6.setVisible(true);
+//        } else {
+//
+//            CasillaSF6.setVisible(false);
+//        }
+//        if (nameSF == "Cammy") {
+//
+//            CasillaSF7.setVisible(true);
+//        } else {
+//            CasillaSF7.setVisible(false);
+//        }
+//        if (nameSF == "Blanka") {
+//
+//            CasillaSF8.setVisible(true);
+//        } else {
+//
+//            CasillaSF8.setVisible(false);
+//        }
+//        if (nameSF == "Akuma") {
+//
+//            CasillaSF9.setVisible(true);
+//        } else {
+//
+//            CasillaSF9.setVisible(false);
+//        }
 
-        
+    }
+
+    public void SetStatusAdmin(String t) {
+        StatusAdmin.setText(t);
+    }
+
+    public void announce(String value) {
+        if (value == "Tie") {
+            StatusZ.setBackground(gray);
+            StatusZ.setText("TIE");
+            StatusSF.setBackground(gray);
+            StatusSF.setText("TIE");
+        } else if (value == "Unable") {
+            StatusZ.setBackground(white);
+            StatusZ.setText("CANCELLED");
+            StatusSF.setBackground(white);
+            StatusSF.setText("CANCELLED");
+        }
+
+    }
+
+    public void announceWinner(boolean Z) {
+        if (Z) {
+            StatusZ.setBackground(green);
+            StatusZ.setText("WIN");
+            StatusSF.setBackground(red);
+            StatusSF.setText("LOSE");
+            int points = admin.getPointsZ();
+            admin.setPointsZ(points);
+            CountZ.setText(Integer.toString(points));
+        } else {
+            StatusZ.setBackground(red);
+            StatusZ.setText("LOSE");
+            StatusSF.setBackground(green);
+            StatusSF.setText("WIN");
+            int points = admin.getPointsSF();
+            admin.setPointsSF(points);
+            CountSF.setText(Integer.toString(points));
+        }
+
+    }
+
+    public void setWhite() {
+        StatusZ.setBackground(white);
+        StatusZ.setText("");
+        StatusSF.setBackground(white);
+        StatusSF.setText("");
     }
 
     /**
@@ -559,18 +607,18 @@ public class InterfazSimulation extends javax.swing.JFrame {
 
     private void BotonWinnersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonWinnersActionPerformed
         // TODO add your handling code here:
-        if (!visibility){
+        if (!visibility) {
             Cola winners = admin.getWinners();
             lista.listado(winners);
             lista.setVisible(true);
             visibility = true;
             BotonWinners.setText("Ocultar");
-        }else{
+        } else {
             lista.setVisible(false);
             visibility = false;
             BotonWinners.setText("Mostrar");
         }
-        
+
     }//GEN-LAST:event_BotonWinnersActionPerformed
 
     /**
