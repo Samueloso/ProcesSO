@@ -274,33 +274,36 @@ public class Personajes {
     }
     
     public String ListaNombreZ(){
+        
+    // CAMBIAR ESTO NO PUEDO USAR ARRAY LIST 
     
-        List<String> nombres = new ArrayList<>();        
-        nombres.add("Link");
-        nombres.add("Ganondorf");
-        nombres.add("Zelda");
-        nombres.add("Sidon");
-        nombres.add("Riju");
-        nombres.add("Tureli");
-        nombres.add("Yunobo");
-        nombres.add("Rauru");
-        nombres.add("Zonai");
-        nombres.add("Chuchu");
-        nombres.add("Prunia");
-        nombres.add("Kolog");
-        nombres.add("Demon Dragon");
+        String[] nombres = {"Link", "Ganondorf", "Zelda", "Sidon", "Riju", "Tureli", "Yunobo", "Rauru", "Zonai", "Chuchu", "Prunia", "Kolog"};
         
         //selecciono nombre al alzar
         
         Random rand = new Random();
         
-        String nombre= nombres.get(rand.nextInt(nombres.size()));
+        String nombre = nombres[rand.nextInt(nombres.length)];
         
     return nombre;
     }
     
+    public String ListaNombreSF(){
+        
+    // CAMBIAR ESTO NO PUEDO USAR ARRAY LIST 
     
-    public void CrearPersonaje(){
+        String[] nombres = {"Ryu", "Akuma", "M.Bison", "Blanka", "Cammy", "Chun-Li", "Gouken", "Vega", "Viper", "Ken Masters"};
+        
+        //selecciono nombre al alzar
+        
+        Random rand = new Random();
+        
+        String nombreSF = nombres[rand.nextInt(nombres.length)];
+        
+    return nombreSF;
+    }
+    
+    public void CrearPersonajeZ(){
     
         setId(this.id);
         setContador(0);
@@ -312,5 +315,30 @@ public class Personajes {
     
     
     }
+    
+    
+    
+    public void CrearPersonajeSF(){
+    
+        setId(this.id+100);
+        setContador(0);
+        setNombre(ListaNombreSF());
+        AsignarStats();
+        Asignar_Prioridad();
+       }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
