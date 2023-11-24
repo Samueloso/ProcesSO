@@ -25,7 +25,7 @@ public class IA extends Thread {
     private String status = null;
     private boolean Zwinner = false;
 
-    public IA(Semaphore sema1, Semaphore sema2, Semaphore sema3, Admin admin ) {
+    public IA(Semaphore sema1, Semaphore sema2, Semaphore sema3, Admin admin) {
         this.sema1 = sema1;
         this.sema2 = sema2;
         this.sema3 = sema3;
@@ -102,24 +102,18 @@ public class IA extends Thread {
     @Override
     public void run() {
         while (true) {
-            try {
-
-                Work();
-
-                sleep(getAdmin().getTiming() * 1000);
-
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            Work();
         }
-
     }
 
     public void Work() {
         try {
             getSema2().acquire(1);
             getSema1().acquire(1);
+            sleep(getAdmin().getTiming() * 1000);
+            admin.setStatus("Anunciando el resultado");
             Combat();
+            sleep((getAdmin().getTiming() * 1000) / 3);
             getSema1().release();
             getSema3().release();
         } catch (InterruptedException ex) {

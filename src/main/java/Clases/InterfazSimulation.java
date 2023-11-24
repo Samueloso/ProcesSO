@@ -4,6 +4,8 @@
  */
 package Clases;
 
+import java.awt.Color;
+
 /**
  *
  * @author Radenixlol
@@ -11,7 +13,12 @@ package Clases;
 public class InterfazSimulation extends javax.swing.JFrame {
 
     Admin admin = new Admin(this);
-
+    Color green = new Color(0, 153, 0);
+    Color red = new Color(255, 0, 0);
+    Color gray = new Color(102, 102, 102);
+    Color white = new Color(255, 255, 255);
+    Lista lista = new Lista();
+    boolean visibility = false;
     /**
      * Creates new form InterfazSimulation
      */
@@ -158,7 +165,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
   
         
     }
-    
+
     public void UpdateTextSF() {
         String nameSF = admin.getSimulador().getSF().getNombre();
        
@@ -267,25 +274,23 @@ public class InterfazSimulation extends javax.swing.JFrame {
         CasillaSF = new javax.swing.JLabel();
         CountZ = new javax.swing.JTextField();
         CountSF = new javax.swing.JTextField();
-        CasillaZ1 = new javax.swing.JLabel();
-        CasillaZ2 = new javax.swing.JLabel();
-        CasillaZ3 = new javax.swing.JLabel();
-        CasillaZ4 = new javax.swing.JLabel();
-        CasillaZ5 = new javax.swing.JLabel();
-        CasillaZ6 = new javax.swing.JLabel();
-        CasillaZ7 = new javax.swing.JLabel();
-        CasillaZ8 = new javax.swing.JLabel();
-        CasillaZ9 = new javax.swing.JLabel();
-        CasillaZ10 = new javax.swing.JLabel();
-        CasillaSF1 = new javax.swing.JLabel();
-        CasillaSF2 = new javax.swing.JLabel();
-        CasillaSF3 = new javax.swing.JLabel();
-        CasillaSF4 = new javax.swing.JLabel();
-        CasillaSF5 = new javax.swing.JLabel();
-        CasillaSF6 = new javax.swing.JLabel();
-        CasillaSF7 = new javax.swing.JLabel();
-        CasillaSF8 = new javax.swing.JLabel();
-        CasillaSF9 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        BotonWinners = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        seconds = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        StatusAdmin = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -299,7 +304,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola1Z.setRows(5);
         Scroll1Z.setViewportView(Cola1Z);
 
-        jPanel1.add(Scroll1Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 291, -1, -1));
+        jPanel1.add(Scroll1Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 250, 60));
 
         Scroll2Z.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll2Z.setFocusable(false);
@@ -309,7 +314,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola2Z.setRows(5);
         Scroll2Z.setViewportView(Cola2Z);
 
-        jPanel1.add(Scroll2Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 383, -1, -1));
+        jPanel1.add(Scroll2Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 250, 60));
 
         Scroll3Z3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll3Z3.setFocusable(false);
@@ -319,7 +324,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola3Z.setRows(5);
         Scroll3Z3.setViewportView(Cola3Z);
 
-        jPanel1.add(Scroll3Z3, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 475, -1, -1));
+        jPanel1.add(Scroll3Z3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 250, 60));
 
         ScrollRZ.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         ScrollRZ.setFocusable(false);
@@ -329,7 +334,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         ColaRZ.setRows(5);
         ScrollRZ.setViewportView(ColaRZ);
 
-        jPanel1.add(ScrollRZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 567, -1, -1));
+        jPanel1.add(ScrollRZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 250, 60));
 
         Scroll1SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll1SF.setFocusable(false);
@@ -339,7 +344,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola1SF.setRows(5);
         Scroll1SF.setViewportView(Cola1SF);
 
-        jPanel1.add(Scroll1SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 280, -1, -1));
+        jPanel1.add(Scroll1SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 90, 250, 60));
 
         Scroll2SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll2SF.setFocusable(false);
@@ -349,7 +354,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola2SF.setRows(5);
         Scroll2SF.setViewportView(Cola2SF);
 
-        jPanel1.add(Scroll2SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 380, -1, -1));
+        jPanel1.add(Scroll2SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 180, 250, 60));
 
         Scroll3SF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         Scroll3SF.setFocusable(false);
@@ -359,7 +364,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         Cola3SF.setRows(5);
         Scroll3SF.setViewportView(Cola3SF);
 
-        jPanel1.add(Scroll3SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 480, -1, -1));
+        jPanel1.add(Scroll3SF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 280, 250, 60));
 
         ScrollRSF.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         ScrollRSF.setFocusable(false);
@@ -369,33 +374,44 @@ public class InterfazSimulation extends javax.swing.JFrame {
         ColaRSF.setRows(5);
         ScrollRSF.setViewportView(ColaRSF);
 
-        jPanel1.add(ScrollRSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 580, -1, -1));
+        jPanel1.add(ScrollRSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 390, 250, 60));
 
         CasillaZ.setBackground(new java.awt.Color(0, 110, 168));
         CasillaZ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CasillaZ.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
         CasillaZ.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 260, 350));
+        jPanel1.add(CasillaZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 71, 270, 350));
 
+        StatusZ.setEditable(false);
+        StatusZ.setBackground(new java.awt.Color(102, 102, 102));
+        StatusZ.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         StatusZ.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        StatusZ.setText("WIN");
+        StatusZ.setText("CANCELADO");
         StatusZ.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 StatusZActionPerformed(evt);
             }
         });
-        jPanel1.add(StatusZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(459, 692, -1, -1));
+        jPanel1.add(StatusZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, 270, 30));
 
+        StatusSF.setEditable(false);
+        StatusSF.setBackground(new java.awt.Color(255, 0, 0));
+        StatusSF.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         StatusSF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         StatusSF.setText("LOSE");
-        jPanel1.add(StatusSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(705, 692, -1, -1));
+        jPanel1.add(StatusSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 270, 30));
+        StatusSF.getAccessibleContext().setAccessibleName("");
+        StatusSF.getAccessibleContext().setAccessibleDescription("");
 
         CasillaSF.setBackground(new java.awt.Color(51, 204, 255));
         CasillaSF.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CasillaSF.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Viper.png")); // NOI18N
         CasillaSF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
+        jPanel1.add(CasillaSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 71, 270, 350));
 
+        CountZ.setEditable(false);
+        CountZ.setBackground(new java.awt.Color(204, 204, 204));
+        CountZ.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         CountZ.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CountZ.setText("0");
         CountZ.addActionListener(new java.awt.event.ActionListener() {
@@ -403,125 +419,99 @@ public class InterfazSimulation extends javax.swing.JFrame {
                 CountZActionPerformed(evt);
             }
         });
-        jPanel1.add(CountZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 194, -1, -1));
+        jPanel1.add(CountZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 120, 40));
 
+        CountSF.setEditable(false);
+        CountSF.setBackground(new java.awt.Color(204, 204, 204));
+        CountSF.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         CountSF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         CountSF.setText("0");
-        jPanel1.add(CountSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(722, 194, -1, -1));
+        jPanel1.add(CountSF, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 120, 40));
 
-        CasillaZ1.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ1.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Ganondorf.png")); // NOI18N
-        CasillaZ1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 260, 350));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Cola 1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
-        CasillaZ2.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ2.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Zelda.png")); // NOI18N
-        CasillaZ2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 270, 350));
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("Cola 2");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
 
-        CasillaZ3.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ3.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Yunobo.png")); // NOI18N
-        CasillaZ3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 270, 350));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setText("Cola 3");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
-        CasillaZ4.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ4.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Tureli.png")); // NOI18N
-        CasillaZ4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ4, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 270, 360));
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setText("Cola de Refuerzo");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
 
-        CasillaZ5.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ5.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Sidon.png")); // NOI18N
-        CasillaZ5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 270, 350));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setText("Cola 1");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 70, -1, -1));
 
-        CasillaZ6.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ6.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Riju.png")); // NOI18N
-        CasillaZ6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 270, 360));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setText("Cola 2");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 160, -1, -1));
 
-        CasillaZ7.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ7.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Rauru.png")); // NOI18N
-        CasillaZ7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ7, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 280, 360));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setText("Cola 3");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 260, -1, -1));
 
-        CasillaZ8.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ8.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Prunia.png")); // NOI18N
-        CasillaZ8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, -1, 350));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setText("Cola de Refuerzo");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 370, -1, -1));
 
-        CasillaZ9.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ9.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Mineru.png")); // NOI18N
-        CasillaZ9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 290, 270, 350));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel9.setText("Zelda");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 24, -1, -1));
 
-        CasillaZ10.setBackground(new java.awt.Color(0, 110, 168));
-        CasillaZ10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ10.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Kolog.png")); // NOI18N
-        CasillaZ10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 270, 350));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel10.setText("Street Fighter");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 30, -1, -1));
 
-        CasillaSF1.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF1.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Vega.png")); // NOI18N
-        CasillaSF1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
+        BotonWinners.setText("Mostrar");
+        BotonWinners.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonWinnersActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BotonWinners, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 490, -1, -1));
 
-        CasillaSF2.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF2.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Ryu.png")); // NOI18N
-        CasillaSF2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setText("Segundos de duración de la simulación");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, -1, -1));
 
-        CasillaSF3.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF3.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\MBison.png")); // NOI18N
-        CasillaSF3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setText("Ganadores");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 470, -1, -1));
 
-        CasillaSF4.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF4.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Ken Masters.png")); // NOI18N
-        CasillaSF4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
+        seconds.setEditable(false);
+        seconds.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        seconds.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        seconds.setText("10");
+        jPanel1.add(seconds, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, -1, -1));
 
-        CasillaSF5.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF5.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Chuli.png")); // NOI18N
-        CasillaSF5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton1.setText("+");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, -1, -1));
 
-        CasillaSF6.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF6.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Gouken.png")); // NOI18N
-        CasillaSF6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButton2.setText("-");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 490, -1, -1));
 
-        CasillaSF7.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF7.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Cammy.png")); // NOI18N
-        CasillaSF7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF7, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
-
-        CasillaSF8.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF8.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Blanka.png")); // NOI18N
-        CasillaSF8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF8, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
-
-        CasillaSF9.setBackground(new java.awt.Color(51, 204, 255));
-        CasillaSF9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaSF9.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Akuma.png")); // NOI18N
-        CasillaSF9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaSF9, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 290, 270, 350));
+        StatusAdmin.setEditable(false);
+        StatusAdmin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        StatusAdmin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jPanel1.add(StatusAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 490, 260, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -545,8 +535,44 @@ public class InterfazSimulation extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_StatusZActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int t = admin.getTiming();
+        if (t > 1 && t <= 30) {
 
-    
+            t--;
+            seconds.setText(Integer.toString(t));
+            admin.setTiming(t);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int t = admin.getTiming();
+        if (t >= 1 && t < 30) {
+
+            t++;
+            seconds.setText(Integer.toString(t));
+            admin.setTiming(t);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BotonWinnersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonWinnersActionPerformed
+        // TODO add your handling code here:
+        if (!visibility){
+            Cola winners = admin.getWinners();
+            lista.listado(winners);
+            lista.setVisible(true);
+            visibility = true;
+            BotonWinners.setText("Ocultar");
+        }else{
+            lista.setVisible(false);
+            visibility = false;
+            BotonWinners.setText("Mostrar");
+        }
+        
+    }//GEN-LAST:event_BotonWinnersActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -592,6 +618,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BotonWinners;
     private javax.swing.JLabel CasillaSF;
     private javax.swing.JLabel CasillaSF1;
     private javax.swing.JLabel CasillaSF2;
@@ -631,8 +658,24 @@ public class InterfazSimulation extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scroll3Z3;
     private javax.swing.JScrollPane ScrollRSF;
     private javax.swing.JScrollPane ScrollRZ;
+    private javax.swing.JTextField StatusAdmin;
     private javax.swing.JTextField StatusSF;
     private javax.swing.JTextField StatusZ;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField seconds;
     // End of variables declaration//GEN-END:variables
 }
