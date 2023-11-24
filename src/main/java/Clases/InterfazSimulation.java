@@ -241,7 +241,8 @@ public class InterfazSimulation extends javax.swing.JFrame {
 
         
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -291,6 +292,15 @@ public class InterfazSimulation extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         StatusAdmin = new javax.swing.JTextField();
+        CasillaZ1 = new javax.swing.JLabel();
+        CasillaZ2 = new javax.swing.JLabel();
+        CasillaZ3 = new javax.swing.JLabel();
+        CasillaZ4 = new javax.swing.JLabel();
+        CasillaZ5 = new javax.swing.JLabel();
+        CasillaZ6 = new javax.swing.JLabel();
+        CasillaZ7 = new javax.swing.JLabel();
+        CasillaZ8 = new javax.swing.JLabel();
+        CasillaZ9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -380,7 +390,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         CasillaZ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         CasillaZ.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
         CasillaZ.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(CasillaZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 71, 270, 350));
+        jPanel1.add(CasillaZ, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
 
         StatusZ.setEditable(false);
         StatusZ.setBackground(new java.awt.Color(102, 102, 102));
@@ -513,6 +523,60 @@ public class InterfazSimulation extends javax.swing.JFrame {
         StatusAdmin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPanel1.add(StatusAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 490, 260, -1));
 
+        CasillaZ1.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ1.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
+        CasillaZ2.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ2.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
+        CasillaZ3.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ3.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ3, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
+        CasillaZ4.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ4.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
+        CasillaZ5.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ5.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
+        CasillaZ6.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ6.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
+        CasillaZ7.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ7.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
+        CasillaZ8.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ8.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
+        CasillaZ9.setBackground(new java.awt.Color(0, 110, 168));
+        CasillaZ9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CasillaZ9.setIcon(new javax.swing.ImageIcon("C:\\Users\\samue\\Desktop\\Cartas\\Link.png")); // NOI18N
+        CasillaZ9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.add(CasillaZ9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 270, 350));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -521,7 +585,7 @@ public class InterfazSimulation extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 736, Short.MAX_VALUE)
         );
 
         pack();
@@ -620,18 +684,8 @@ public class InterfazSimulation extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonWinners;
     private javax.swing.JLabel CasillaSF;
-    private javax.swing.JLabel CasillaSF1;
-    private javax.swing.JLabel CasillaSF2;
-    private javax.swing.JLabel CasillaSF3;
-    private javax.swing.JLabel CasillaSF4;
-    private javax.swing.JLabel CasillaSF5;
-    private javax.swing.JLabel CasillaSF6;
-    private javax.swing.JLabel CasillaSF7;
-    private javax.swing.JLabel CasillaSF8;
-    private javax.swing.JLabel CasillaSF9;
     private javax.swing.JLabel CasillaZ;
     private javax.swing.JLabel CasillaZ1;
-    private javax.swing.JLabel CasillaZ10;
     private javax.swing.JLabel CasillaZ2;
     private javax.swing.JLabel CasillaZ3;
     private javax.swing.JLabel CasillaZ4;
