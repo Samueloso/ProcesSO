@@ -4,10 +4,6 @@
  */
 package Clases;
 
-import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
 /**
  *
  * @author Radenixlol
@@ -80,9 +76,13 @@ public class InterfazSimulation extends javax.swing.JFrame {
         }
     }
 
-    public void UpdateText() {
+    public void UpdateTextZ() {
         String nameZ = admin.getSimulador().getZ().getNombre();
         CasillaZ.setText(nameZ);
+        
+    }
+    
+    public void UpdateTextSF() {
         String nameSF = admin.getSimulador().getSF().getNombre();
         CasillaSF.setText(nameSF);
         
@@ -189,7 +189,6 @@ public class InterfazSimulation extends javax.swing.JFrame {
 
         CasillaZ.setBackground(new java.awt.Color(0, 110, 168));
         CasillaZ.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CasillaZ.setIcon(new javax.swing.ImageIcon("D:\\UNIMET\\Trimestre 10\\Sistemas Operativos\\ProcesSO\\src\\main\\java\\Imagenes\\Zelda.png")); // NOI18N
         CasillaZ.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         StatusZ.setHorizontalAlignment(javax.swing.JTextField.CENTER);
